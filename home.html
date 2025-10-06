@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+  script-src 'self' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://unpkg.com 'unsafe-inline' 'unsafe-eval';
+  style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com 'unsafe-inline';
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://unpkg.com;
+  img-src 'self' data:;
+  connect-src 'self';
+  base-uri 'self';
+  form-action 'self'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+
+    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind = tailwind || {};
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      [data-aos="zoom-out-up"] {
+        transform: translateY(50%) scale(0.1);
+        opacity: 0;
+      }
+
+      [data-aos="zoom-out-up"].aos-animate {
+        transform: translateY(0) scale(3);
+        opacity: 1;
+      }
+
+      /* Prevent horizontal scroll */
+      * {
+        max-width: 100%;
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      div {
+        overflow: visible !important;
+      }
+    </style>
+  </head>
+
+  <body
+    class="min-h-screen relative bg-gradient-to-b from-orange-300 via-orange-200 to-orange-100 overflow-x-hidden font-sans w-full"
+  >
+    <div
+      class="fixed top-0 left-0 right-0 bottom-0 bg-[url('images/backgroundPhoto1.png')] bg-cover bg-center bg-no-repeat opacity-25 -z-10"
+    ></div>
+
+    <div class="flex overflow-x-hidden w-full">
+      <!-- Main content -->
+      <div class="flex-1 relative overflow-x-hidden w-full">
+        <!-- Navbar -->
+        <nav
+          class="relative z-50 flex items-center justify-between px-4 py-2 -mt-2 2xl:-mt-6 2xl:h-24 bg-gradient-to-b from-blue-700 via-blue-600 to-blue-600 shadow-lg rounded-b-[25px] w-full"
+        >
+          <!-- Left: Logo -->
+          <div class="flex-shrink-0">
+            <img
+              src="images/logo.gif"
+              alt="Logo"
+              class="h-10 w-auto lg:h-24 lg:w-auto lg:mr-40 2xl:h-[130px] 2xl:w-auto 2xl:ml-6"
+            />
+          </div>
+          <div
+            class="flex flex-1 justify-evenly space-x-4 lg:space-x-28 text-[6px] lg:text-lg 2xl:mt-4"
+          >
+            <a
+              href="#"
+              class="font-semibold transition-colors duration-100 text-white hover:text-orange-300"
+              >Home</a
+            >
+            <a
+              href="#"
+              class="font-semibold transition-colors duration-100 text-white hover:text-orange-300"
+              >About</a
+            >
+            <a
+              href="#"
+              class="font-semibold transition-colors duration-100 text-white hover:text-orange-300"
+              >Community</a
+            >
+            <a
+              href="#"
+              class="font-semibold transition-colors duration-100 text-white hover:text-orange-300"
+              >Contact Us</a
+            >
+          </div>
+
+          <!-- Right: Buttons -->
+          <div class="flex space-x-1 text-[6px] lg:text-lg 2xl:mt-4">
+            <a
+              href="loginForm.html"
+              class="bg-gray-200 rounded-full px-3 py-1 lg:px-4 lg:py-2 font-semibold text-center hover:bg-gray-300 transition-colors duration-100"
+            >
+              Login
+            </a>
+            <a
+              href="register.php"
+              class="bg-orange-500 rounded-full px-3 py-1 lg:px-4 lg:py-2 font-semibold text-white text-center hover:bg-orange-600 transition-colors duration-100"
+            >
+              Register
+            </a>
+          </div>
+        </nav>
+
+        <div class="flex flex-col 2xl:ml-8 overflow-x-hidden w-full 2xl:mt-28">
+          <div
+            class="hidden xl:block xl:w-1/2 text-left px-6 relative top-44 left-8"
+          >
+            <h1 class="text-5xl leading-tight font-semibold">
+              Play
+              <span class="text-orange-500 font-bold 2xl:text-6xl" style="-webkit-text-stroke:  1px #a14900;;">Wilyonaryo</span> now! &
+              Win Money Unlimited
+            </h1>
+            <p class="text-lg mt-6">
+              Play wilyonaryo and earn one million pesos, car, and even a house
+              and lot! "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+
+            <div>
+              <a
+                href="register.php"
+                class="absolute shadow-lg bg-blue-600 rounded-full px-3 py-1 lg:px-4 lg:py-2 font-semibold text-white text-center top-[400px] xl:top-[500px] left-8 2xl:top-[250px] 2xl:w-[200px] 2xl:h-[px] h-[40px] flex items-center justify-center hover:bg-blue-700 transition-colors duration-100"
+              >
+                Buy Tickets
+              </a>
+            </div>
+          </div>
+
+          <!-- Willie block -->
+          <div
+            class="relative flex-shrink-0 mt-12 w-full flex justify-center items-center -top-[48px] 2xl:left-[380px] 2xl:-top-[650px] lg:mt-20 xl:mt-32"
+          >
+            <div
+              class="relative scale-75 lg:scale-50 xl:scale-40 2xl:scale-[0.43] origin-center"
+            >
+              <img
+                src="images/lightScreen.gif"
+                alt=""
+                class="relative top-20 lg:top-28 xl:-top-[-60px] drop-shadow-2xl"
+              />
+              <img
+                src="images/willie.png"
+                alt="picture of koya wel"
+                class="absolute left-1/2 transform -translate-x-1/2 top-0 lg:-top-60 max-w-full drop-shadow-2xl"
+              />
+              <img
+                src="images/frame.gif"
+                alt=""
+                class="absolute left-1/2 transform -translate-x-1/2 top-62 lg:top-[900px] scale-90 lg:scale-90 max-w-full xl:top-[830px] drop-shadow-2xl"
+              />
+            </div>
+          </div>
+
+          <div
+            class="block 2xl:hidden flex flex-col justify-center text-center mt-40 mx-8 px-4"
+          >
+            <h1 class="font-bold text-2xl">Wilyonaryo</h1>
+            <p class="text-xs">
+              Play Wilyonaryo and earn one million pesos, a brand-new car, and
+              even a house and lot! Join the fun, test your luck and experience
+              the excitement of winning life-chagning prizes every game. WIth
+              countless chances to win, everyplay brings you closer to your
+              dreams.
+            </p>
+            <a
+              href=""
+              class="text-white mt-4 bg-blue-600 p-2 px-4 rounded-full w-38 text-xs mx-auto font-semibold"
+              >Buy Tickets</a
+            >
+          </div>
+
+          <div
+            data-aos="fade-down"
+            class="flex flex-col items-center justify-center mx-8 mt-24 2xl:scale-[0.8] 2xl:-mt-[100px] 2xl:mx-44 px-4"
+            data-aos-once="true"
+          >
+            <h1 class="text-lg font-bold 2xl:text-5xl text-center">
+              Discover the Lottery Experience
+            </h1>
+            <h1 class="text-[8px] text-center 2xl:text-4xl 2xl:mt-4">
+              From playing your numbers to exploring jackpots and playing
+              responsibly, here's everything you need to know.Learn how it
+              works, see today's biggest prizes, and enjoy the excitement
+              responsibly.
+            </h1>
+          </div>
+
+          <div
+            class="mt-5 2xl:-mt-[300px] 2xl:scale-[0.7] w-full overflow-x-hidden"
+          >
+            <div
+              data-aos="fade-right"
+              class="flex justify-between gap-4 px-8 my-8 2xl:my-80 2xl:mx-20 2xl:px-2"
+            >
+              <div class="p-2 h-[100px] w-1/2 rounded-2xl 2xl:h-[500px]">
+                <h1 class="text-xs font-bold 2xl:text-6xl 2xl:mt-5 2xl:mb-4">
+                  How It Works
+                </h1>
+                <p class="text-[8px] 2xl:text-4xl">
+                  Playing the lottery has never been simpler. Pick your favorite
+                  numbers, purchase your ticket online, and tune in for the
+                  draw. Winners are automatically notified, making your
+                  experience smooth and exciting.
+                </p>
+              </div>
+
+              <div
+                class="p-2 h-[100px] w-1/2 rounded-2xl 2xl:h-[500px] overflow-hidden"
+              >
+                <img
+                  src="images/lottery2.png"
+                  alt=""
+                  class="object-cover w-full h-full rounded-2xl shadow-xl"
+                />
+              </div>
+            </div>
+
+            <div
+              data-aos="fade-right"
+              class="flex justify-between gap-4 px-8 my-8 2xl:my-80 2xl:mx-20 2xl:px-2"
+            >
+              <div
+                class="p-2 h-[100px] w-1/2 rounded-2xl 2xl:h-[500px] overflow-hidden"
+              >
+                <img
+                  src="images/lottery3.png"
+                  alt=""
+                  class="object-cover w-full h-full rounded-2xl shadow-xl"
+                />
+              </div>
+
+              <div class="p-2 h-[100px] w-1/2 rounded-2xl 2xl:h-[500px]">
+                <h1 class="text-xs font-bold 2xl:text-6xl 2xl:mt-5 2xl:mb-4">
+                  Current Jackpots
+                </h1>
+                <p class="text-[8px] 2xl:text-4xl">
+                  Explore the latest jackpots and see which games are offering
+                  the biggest prizes today. From local draws to international
+                  lotteries, there's a chance for everyone to win big
+                </p>
+              </div>
+            </div>
+
+            <div
+              data-aos="fade-right"
+              class="flex justify-between gap-4 px-8 my-8 2xl:mt-40 2xl:mx-20 2xl:px-2"
+            >
+              <div class="p-2 h-[100px] w-1/2 rounded-2xl 2xl:h-[500px]">
+                <h1 class="text-xs font-bold 2xl:text-6xl 2xl:mt-5 2xl:mb-4">
+                  Responsible Gaming
+                </h1>
+                <p class="text-[8px] 2xl:text-4xl">
+                  Your fun is important, but safety comes first. Set limits,
+                  play responsibly, and enjoy the excitement of the lottery
+                  without overextending yourself.
+                </p>
+              </div>
+
+              <div
+                class="p-2 h-[100px] w-1/2 rounded-2xl 2xl:h-[500px] overflow-hidden"
+              >
+                <img
+                  src="images/lottery1.png"
+                  alt=""
+                  class="object-cover w-full h-full rounded-2xl shadow-xl"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div
+            data-aos="fade-down"
+            class="flex flex-col items-center justify-center mx-8 mt-10 2xl:scale-[0.8] 2xl:mx-44 px-4"
+            data-aos-once="true"
+          >
+            <h1 class="text-lg font-bold 2xl:text-4xl text-center">
+              Win Life-Changing Prizes Today!
+            </h1>
+            <h1 class="text-[8px] text-center 2xl:text-4xl 2xl:mt-4">
+              Step into the excitement of our lottery and get the opportunity to
+              change your life. Imagine driving away in a brand-new car, moving
+              into your dream house & lot, or holding a check for ₱6 Million
+              pesos. Even ₱50,000 in cash could be yours—just one lucky ticket
+              away!
+            </h1>
+          </div>
+
+          <div
+            class="flex justify-center -mt-[100px] 2xl:mt-[200px] 2xl:scale-125 w-full overflow-x-hidden px-4"
+          >
+            <!--Boxes-->
+            <div class="relative flex justify-center items-end h-60 mx-2">
+              <img
+                id="boxGif"
+                src="images/openBox.png"
+                alt="Box opening"
+                class="h-24 w-auto 2xl:h-60 drop-shadow-xl"
+              />
+              <img
+                src="images/6mil.png"
+                alt="Prize"
+                data-aos="zoom-out-up"
+                data-aos-delay="100"
+                data-aos-once="false"
+                class="absolute bottom-12 h-14 w-14 2xl:h-28 2xl:left-[40px] left-[12px] 2xl:bottom-[105px] 2xl:w-28 rounded-full shadow-xl shadow-orange-500/50 border border-orange-500"
+              />
+            </div>
+            <div class="relative flex justify-center items-end h-60 mx-2">
+              <img
+                id="boxGif2"
+                src="images/openBox.png"
+                alt="Box opening"
+                class="h-24 w-auto 2xl:h-60 drop-shadow-xl"
+              />
+
+              <img
+                src="images/car.png"
+                alt="Prize"
+                data-aos="zoom-out-up"
+                data-aos-delay="100"
+                data-aos-once="false"
+                class="absolute bottom-12 h-14 w-14 2xl:h-28 2xl:left-[40px] left-[12px] 2xl:bottom-[105px] 2xl:w-28 rounded-full shadow-xl shadow-orange-500/50 border border-orange-500"
+              />
+            </div>
+            <div class="relative flex justify-center items-end h-60 mx-2">
+              <img
+                id="boxGif3"
+                src="images/openBox.png"
+                alt="Box opening"
+                class="h-24 w-auto 2xl:h-60 drop-shadow-xl"
+              />
+
+              <img
+                src="images/house.png"
+                alt="Prize"
+                data-aos="zoom-out-up"
+                data-aos-delay="100"
+                data-aos-once="false"
+                class="absolute bottom-12 h-14 w-14 2xl:h-28 2xl:left-[40px] left-[12px] 2xl:bottom-[105px] 2xl:w-28 rounded-full shadow-xl shadow-orange-500/50 border border-orange-500"
+              />
+            </div>
+            <div class="relative flex justify-center items-end h-60 mx-2">
+              <img
+                id="boxGif4"
+                src="images/openBox.png"
+                alt="Box opening"
+                class="h-24 w-auto 2xl:h-60 drop-shadow-xl"
+              />
+
+              <img
+                src="images/50k.png"
+                alt="Prize"
+                data-aos="zoom-out-up"
+                data-aos-delay="100"
+                data-aos-once="false"
+                class="absolute bottom-12 h-14 w-14 2xl:h-28 2xl:left-[40px] left-[12px] 2xl:bottom-[105px] 2xl:w-28 rounded-full shadow-xl shadow-orange-500/50 border border-orange-500"
+              />
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col justify-center items-center mt-24 2xl:mt-80 px-4"
+          >
+            <img
+              src="images/alden.png "
+              alt=""
+              class="h-14 w-[80%] rounded-lg 2xl:h-60 max-w-full"
+            />
+            <h1 class="text-xs">Sample Ad/Banner</h1>
+          </div>
+
+          <div
+            class="flex text-white bg-blue-400/65 mx-4 rounded-lg mt-10 p-4 2xl:mx-48 border-2 border-blue-600 2xl:pb-16"
+          >
+            <div class="flex flex-col w-1/2">
+              <h1 class="font-bold text-md 2xl:text-2xl">Wilyonaryo™</h1>
+              <h1 class="text-[8px] py-2 2xl:text-[16px]">
+                Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
+                Clark Air Base, Philippines
+              </h1>
+              <h1 class="font-bold text-xs 2xl:text-xl 2xl:mt-2">
+                Official License & Gaming Responsibility
+              </h1>
+              <h1 class="text-[8px] py-2 2xl:text-[16px]">
+                Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
+                Clark Air Base, Philippines
+              </h1>
+
+              <img
+                src="images/pagcor-logo.png"
+                alt=""
+                class="h-4 w-9 2xl:h-10 2xl:w-24 2xl:ml-4 ml-1"
+              />
+              <h1 class="text-[7px] mt-2 2xl:text-[16px]">
+                Gambling doesn't guarantee earnings or financial improvement.
+                Stay within your limits. Need Help? Contact PAGCOR at (02)
+                8527-9831 or visit
+                www.pagcor.ph/regulatory/responsible-gaming.php
+              </h1>
+            </div>
+            <!--Left Side-->
+            <div class="flex flex-col mx-4">
+              <h1 class="font-bold text-xs 2xl:text-xl">Web Map</h1>
+              <div class="flex justify-evenly">
+                <div class="flex flex-col">
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">Live Game</h1>
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">Home</h1>
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">Promotion</h1>
+                </div>
+                <div class="flex flex-col mx-2">
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">Support</h1>
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">FAQ</h1>
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">
+                    Terms & Conditions
+                  </h1>
+                </div>
+                <div class="flex flex-col">
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">
+                    Privacy Policy
+                  </h1>
+                </div>
+              </div>
+              <h1 class="font-bold text-xs 2xl:text-xl">Join our community</h1>
+              <div class="flex pt-1">
+                <img
+                  src="images/FbLogo.png"
+                  alt=""
+                  class="h-4 2xl:h-8 w-auto"
+                />
+                <img
+                  src="images/teleLogo2.png"
+                  alt=""
+                  class="h-4 2xl:h-8 w-auto"
+                />
+              </div>
+              <h1 class="font-bold text-xs 2xl:text-xl">Follow Us</h1>
+              <div class="flex pt-1">
+                <img
+                  src="images/FbLogo.png"
+                  alt=""
+                  class="h-4 2xl:h-8 w-auto"
+                />
+                <img
+                  src="images/xlogo.png"
+                  alt=""
+                  class="h-4 2xl:h-8 w-auto mr-2"
+                />
+                <img
+                  src="images/tiktoklogo.png"
+                  alt=""
+                  class="h-4 2xl:h-8 w-auto"
+                />
+                <img
+                  src="images/instagramLogo.png"
+                  alt=""
+                  class="h-4 2xl:h-8 w-auto"
+                />
+                <img
+                  src="images/youtubelogo.png"
+                  alt=""
+                  class="h-4 2xl:h-8 w-auto"
+                />
+              </div>
+            </div>
+            <!--Right Side-->
+          </div>
+
+          <div class="flex justify-center items-center my-2 px-4">
+            <h1 class="text-[8px] 2xl:text-[10px] text-gray-800 text-center">
+              ©2024-2025 WILYONARYO PLUS ALL RIGHT RESERVED
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: false,
+      });
+    </script>
+  </body>
+</html>
