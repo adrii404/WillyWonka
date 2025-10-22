@@ -63,9 +63,11 @@
         opacity: 1;
       }
 
-      html,
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
-        height: 100%;
         margin: 0;
         overflow-x: hidden;
         width: 100%;
@@ -187,7 +189,7 @@
         </div>
 
         <!-- Mobile intro text -->
-        <div class="xl:hidden text-center px-2 my-20">
+        <div class="xl:hidden text-center px-2 my-20 mx-8">
           <h1 class="font-bold text-[clamp(1.25rem,4vw,2rem)]">Wilyonaryo</h1>
           <p class="text-[clamp(.8rem,2.5vw,.95rem)] mt-2">
             Play Wilyonaryo and earn one million pesos, a brand-new car, and
@@ -204,20 +206,17 @@
       </div>
     </section>
 
-    <!-- DISCOVER (AOS removed) -->
-    <!-- DISCOVER -->
+    <!-- HERO / INTRO -->
     <section
       data-aos="fade-down"
-
-      class="max-w-screen-2xl mx-auto px-4 md:px-6 pt-24 md:pt-32 2xl:pt-40"
+      data-aos-once="true"
+      class="container mx-auto max-w-screen-2xl px-4 md:px-6 lg:mt-72 pt-[clamp(1.5rem,4vw,3.5rem)]"
     >
-      <h2
-        class="font-bold text-center leading-tight text-[clamp(1.25rem,3vw,2.5rem)]"
-      >
+      <h1 class="text-center font-bold text-[clamp(1.25rem,4vw,3rem)]">
         Discover the Lottery Experience
-      </h2>
+      </h1>
       <p
-        class="text-center mt-3 text-[clamp(.85rem,1.2vw,1.25rem)] max-w-4xl mx-auto"
+        class="mt-3 text-center text-[clamp(.8rem,1.6vw,1.25rem)] max-w-4xl mx-auto"
       >
         From playing your numbers to exploring jackpots and playing responsibly,
         here's everything you need to know. Learn how it works, see today's
@@ -225,101 +224,103 @@
       </p>
     </section>
 
-    <!-- THREE ROWS -->
-    <section class="max-w-screen-2xl mx-auto px-4 md:px-6 mt-10">
-      <!-- Row 1 -->
-      <div
-        data-aos="fade-up"
-        data-aos-offset="0"
-        data-aos-anchor-placement="top-bottom"
-        class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
-      >
-        <div>
-          <h3 class="font-bold text-[clamp(1rem,2.5vw,2.5rem)] mb-2">
-            How It Works
-          </h3>
-          <p class="text-[clamp(.85rem,1.2vw,1.5rem)]">
+    <!-- ROW 1 -->
+    <section
+      data-aos="fade-right"
+      class="container mx-auto max-w-screen-2xl px-4 md:px-6 mt-10"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-6 lg:gap-10">
+        <div class="rounded-2xl p-4 md:p-6">
+          <h2 class="font-bold text-[clamp(1rem,3vw,2.25rem)]">How It Works</h2>
+          <p class="mt-2 text-[clamp(.85rem,1.5vw,1.125rem)] leading-relaxed">
             Playing the lottery has never been simpler. Pick your favorite
             numbers, purchase your ticket online, and tune in for the draw.
             Winners are automatically notified, making your experience smooth
             and exciting.
           </p>
         </div>
+
         <div class="rounded-2xl overflow-hidden">
-          <div class="aspect-[4/3]">
+          <div class="aspect-[16/10] lg:aspect-[4/3]">
             <img
               src="images/lottery2.png"
-              alt=""
-              class="w-full h-full object-cover rounded-2xl shadow-xl"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 2 (image first on desktop) -->
-      <div
-        data-aos="fade-up"
-        data-aos-offset="0"
-        data-aos-anchor-placement="top-bottom"
-        class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-10"
-      >
-        <div class="rounded-2xl overflow-hidden order-1 md:order-none">
-          <div class="aspect-[4/3]">
-            <img
-              src="images/lottery3.png"
-              alt=""
-              class="w-full h-full object-cover rounded-2xl shadow-xl"
-            />
-          </div>
-        </div>
-        <div>
-          <h3 class="font-bold text-[clamp(1rem,2.5vw,2.5rem)] mb-2">
-            Current Jackpots
-          </h3>
-          <p class="text-[clamp(.85rem,1.2vw,1.5rem)]">
-            Explore the latest jackpots and see which games are offering the
-            biggest prizes today. From local draws to international lotteries,
-            there's a chance for everyone to win big.
-          </p>
-        </div>
-      </div>
-
-      <!-- Row 3 -->
-      <div
-        data-aos="fade-up"
-        data-aos-offset="0"
-        data-aos-anchor-placement="top-bottom"
-        class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-10"
-      >
-        <div>
-          <h3 class="font-bold text-[clamp(1rem,2.5vw,2.5rem)] mb-2">
-            Responsible Gaming
-          </h3>
-          <p class="text-[clamp(.85rem,1.2vw,1.5rem)]">
-            Your fun is important, but safety comes first. Set limits, play
-            responsibly, and enjoy the excitement of the lottery without
-            overextending yourself.
-          </p>
-        </div>
-        <div class="rounded-2xl overflow-hidden">
-          <div class="aspect-[4/3]">
-            <img
-              src="images/lottery1.png"
-              alt=""
-              class="w-full h-full object-cover rounded-2xl shadow-xl"
+              alt="How it works"
+              class="lg:h-[80%] h-[70%] w-[80%] mx-auto object-cover rounded-2xl shadow-xl"
             />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA (AOS removed) -->
-    <section class="max-w-screen-2xl mx-auto px-4 md:px-6 mt-14">
-      <h2 class="font-bold text-center text-[clamp(1.2rem,2.5vw,2rem)]">
+    <!-- ROW 2 -->
+    <section
+      data-aos="fade-right"
+      class="container mx-auto max-w-screen-2xl px-4 md:px-6 mt-10"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-6 lg:gap-10">
+        <div class="order-last md:order-first rounded-2xl overflow-hidden">
+          <div class="aspect-[16/10] lg:aspect-[4/3]">
+            <img
+              src="images/lottery3.png"
+              alt="Current jackpots"
+              class="lg:h-[80%] h-[70%] w-[80%] mx-auto object-cover rounded-2xl shadow-xl"
+            />
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-4 md:p-6">
+          <h2 class="font-bold text-[clamp(1rem,3vw,2.25rem)]">
+            Current Jackpots
+          </h2>
+          <p class="mt-2 text-[clamp(.85rem,1.5vw,1.125rem)] leading-relaxed">
+            Explore the latest jackpots and see which games are offering the
+            biggest prizes today. From local draws to international lotteries,
+            there's a chance for everyone to win big.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROW 3 -->
+    <section
+      data-aos="fade-right"
+      class="container mx-auto max-w-screen-2xl px-4 md:px-6 mt-10"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-6 lg:gap-10">
+        <div class="rounded-2xl p-4 md:p-6">
+          <h2 class="font-bold text-[clamp(1rem,3vw,2.25rem)]">
+            Responsible Gaming
+          </h2>
+          <p class="mt-2 text-[clamp(.85rem,1.5vw,1.125rem)] leading-relaxed">
+            Your fun is important, but safety comes first. Set limits, play
+            responsibly, and enjoy the excitement of the lottery without
+            overextending yourself.
+          </p>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden">
+          <div class="aspect-[16/10] lg:aspect-[4/3]">
+            <img
+              src="images/lottery1.png"
+              alt="Responsible gaming"
+              class="lg:h-[80%] h-[70%] w-[80%] mx-auto object-cover rounded-2xl shadow-xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section
+      data-aos="fade-down"
+      data-aos-once="true"
+      class="container mx-auto max-w-screen-2xl px-4 md:px-6 mt-14 mb-10"
+    >
+      <h2 class="text-center font-bold text-[clamp(1.1rem,3.5vw,2.5rem)]">
         Win Life-Changing Prizes Today!
       </h2>
       <p
-        class="text-center mt-3 text-[clamp(.85rem,1.2vw,1.25rem)] max-w-4xl mx-auto"
+        class="mt-3 text-center text-[clamp(.85rem,1.6vw,1.25rem)] max-w-4xl mx-auto"
       >
         Step into the excitement of our lottery and get the opportunity to
         change your life. Imagine driving away in a brand-new car, moving into
@@ -328,74 +329,78 @@
       </p>
     </section>
 
-    <!-- PRIZE BOXES (kept AOS on icons) -->
-    <section class="max-w-screen-2xl mx-auto px-4 md:px-6 mt-10">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 place-items-center">
-        <div class="relative h-60 w-full max-w-xs">
-          <img
-            src="images/openBox.png"
-            alt="Box opening"
-            class="h-24 w-auto mx-auto drop-shadow-xl"
-          />
-          <img
-            src="images/grandprize.png"
-            alt="Prize"
-            data-aos="zoom-out-up"
-            data-aos-delay="100"
-            data-aos-once="false"
-            class="absolute left-1/2 -translate-x-1/2 bottom-[22%] size-16 md:size-24 rounded-full shadow-xl shadow-orange-500/50"
-          />
-        </div>
-
-        <div class="relative h-60 w-full max-w-xs">
-          <img
-            src="images/openBox.png"
-            alt="Box opening"
-            class="h-24 w-auto mx-auto drop-shadow-xl"
-          />
-          <img
-            src="images/newcar.png"
-            alt="Prize"
-            data-aos="zoom-out-up"
-            data-aos-delay="100"
-            data-aos-once="false"
-            class="absolute left-1/2 -translate-x-1/2 bottom-[22%] size-16 md:size-24 rounded-full shadow-xl shadow-orange-500/50"
-          />
-        </div>
-
-        <div class="relative h-60 w-full max-w-xs">
-          <img
-            src="images/openBox.png"
-            alt="Box opening"
-            class="h-24 w-auto mx-auto drop-shadow-xl"
-          />
-          <img
-            src="images/houseandlot.png"
-            alt="Prize"
-            data-aos="zoom-out-up"
-            data-aos-delay="100"
-            data-aos-once="false"
-            class="absolute left-1/2 -translate-x-1/2 bottom-[22%] size-16 md:size-24 rounded-full shadow-xl shadow-orange-500/50"
-          />
-        </div>
-
-        <div class="relative h-60 w-full max-w-xs">
-          <img
-            src="images/openBox.png"
-            alt="Box opening"
-            class="h-24 w-auto mx-auto drop-shadow-xl"
-          />
-          <img
-            src="images/fifty.png"
-            alt="Prize"
-            data-aos="zoom-out-up"
-            data-aos-delay="100"
-            data-aos-once="false"
-            class="absolute left-1/2 -translate-x-1/2 bottom-[22%] size-16 md:size-24 rounded-full shadow-xl shadow-orange-500/50"
-          />
-        </div>
+    <div
+      class="flex justify-center -mt-[100px] 2xl:mt-[200px] 2xl:scale-125 w-full overflow-x-hidden px-4"
+    >
+      <!--Boxes-->
+      <div class="relative flex justify-center items-end h-60 mx-2">
+        <img
+          id="boxGif"
+          src="images/openBox.png"
+          alt="Box opening"
+          class="h-24 w-auto 2xl:h-60 drop-shadow-xl"
+        />
+        <img
+          src="images/grandprize.png"
+          alt="Prize"
+          data-aos="zoom-out-up"
+          data-aos-delay="100"
+          data-aos-once="false"
+          class="absolute bottom-12 h-14 w-14 2xl:h-28 2xl:left-[40px] left-[12px] 2xl:bottom-[105px] 2xl:w-28 rounded-full shadow-xl shadow-orange-500/50"
+        />
       </div>
-    </section>
+      <div class="relative flex justify-center items-end h-60 mx-2">
+        <img
+          id="boxGif2"
+          src="images/openBox.png"
+          alt="Box opening"
+          class="h-24 w-auto 2xl:h-60 drop-shadow-xl"
+        />
+
+        <img
+          src="images/newcar.png"
+          alt="Prize"
+          data-aos="zoom-out-up"
+          data-aos-delay="100"
+          data-aos-once="false"
+          class="absolute bottom-12 h-14 w-14 2xl:h-28 2xl:left-[40px] left-[12px] 2xl:bottom-[105px] 2xl:w-28 rounded-full shadow-xl shadow-orange-500/50"
+        />
+      </div>
+      <div class="relative flex justify-center items-end h-60 mx-2">
+        <img
+          id="boxGif3"
+          src="images/openBox.png"
+          alt="Box opening"
+          class="h-24 w-auto 2xl:h-60 drop-shadow-xl"
+        />
+
+        <img
+          src="images/houseandlot.png"
+          alt="Prize"
+          data-aos="zoom-out-up"
+          data-aos-delay="100"
+          data-aos-once="false"
+          class="absolute bottom-12 h-14 w-14 2xl:h-28 2xl:left-[40px] left-[12px] 2xl:bottom-[105px] 2xl:w-28 rounded-full shadow-xl shadow-orange-500/50"
+        />
+      </div>
+      <div class="relative flex justify-center items-end h-60 mx-2">
+        <img
+          id="boxGif4"
+          src="images/openBox.png"
+          alt="Box opening"
+          class="h-24 w-auto 2xl:h-60 drop-shadow-xl"
+        />
+
+        <img
+          src="images/fifty.png"
+          alt="Prize"
+          data-aos="zoom-out-up"
+          data-aos-delay="100"
+          data-aos-once="false"
+          class="absolute bottom-12 h-14 w-14 2xl:h-28 2xl:left-[40px] left-[12px] 2xl:bottom-[105px] 2xl:w-28 rounded-full shadow-xl shadow-orange-500/50"
+        />
+      </div>
+    </div>
 
     <!-- JACKPOT BANNER -->
     <section class="max-w-screen-2xl mx-auto px-4 md:px-6 mt-16">
@@ -405,7 +410,9 @@
           alt=""
           class="w-[92%] md:w-[90%] rounded-lg h-auto md:h-[320px] object-cover"
         />
-        <div class="absolute inset-0 flex items-center">
+        <div
+          class="absolute inset-0 flex items-center translate-x-8 lg:translate-x-48"
+        >
           <h3
             class="ml-6 md:ml-16 font-luckiest text-orange-950 text-[17px] md:text-6xl"
           >
@@ -416,31 +423,38 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="max-w-screen-2xl mx-auto px-4 md:px-6 mt-10">
+    <footer class="max-w-screen-2xl mx-auto px-4 md:px-6 mt-6 md:mt-10">
       <div
-        class="text-white bg-blue-400/65 rounded-lg p-4 md:p-6 border-2 border-blue-600"
+        class="text-white bg-blue-400/65 rounded-lg p-3 sm:p-4 md:p-6 border-2 border-blue-600"
       >
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           <!-- Left -->
-          <div>
-            <h4 class="font-bold text-lg md:text-2xl">Wilyonaryo™</h4>
-            <p class="text-[clamp(.75rem,1vw,.95rem)] mt-2">
+          <div class="leading-snug">
+            <h4 class="font-bold text-base sm:text-lg md:text-2xl">
+              Wilyonaryo™
+            </h4>
+
+            <p class="text-[7px] mt-1 sm:mt-2">
               Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
               Clark Air Base, Philippines
             </p>
-            <h5 class="font-bold text-sm md:text-xl mt-3">
+
+            <h5 class="font-bold text-xs sm:text-sm md:text-xl mt-2 sm:mt-3">
               Official License & Gaming Responsibility
             </h5>
-            <p class="text-[clamp(.75rem,1vw,.95rem)] mt-2">
+
+            <p class="text-[7px] mt-1 sm:mt-2">
               Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
               Clark Air Base, Philippines
             </p>
+
             <img
               src="images/pagcor-logo.png"
               alt=""
-              class="h-6 w-auto md:h-10 mt-2 md:ml-2"
+              class="h-5 w-auto sm:h-6 md:h-10 mt-2 sm:mt-2 md:ml-2"
             />
-            <p class="text-[11px] md:text-[16px] mt-2">
+
+            <p class="text-[7px] sm:text-[11px] md:text-[16px] mt-2 sm:mt-2">
               Gambling doesn't guarantee earnings or financial improvement. Stay
               within your limits. Need Help? Contact PAGCOR at (02) 8527-9831 or
               visit www.pagcor.ph/regulatory/responsible-gaming.php
@@ -448,81 +462,121 @@
           </div>
 
           <!-- Right -->
-          <div class="grid grid-cols-3 gap-4 md:gap-8">
-            <div>
-              <h6 class="font-bold text-sm md:text-xl">Web Map</h6>
-              <ul class="mt-2 space-y-2 text-[clamp(.75rem,1vw,.95rem)]">
-                <li>Live Game</li>
-                <li>Home</li>
-                <li>Promotion</li>
-              </ul>
-            </div>
-            <div>
-              <h6 class="font-bold text-sm md:text-xl">Support</h6>
-              <ul class="mt-2 space-y-2 text-[clamp(.75rem,1vw,.95rem)]">
-                <li>FAQ</li>
-                <li>Terms &amp; Conditions</li>
-              </ul>
-            </div>
-            <div>
-              <h6 class="font-bold text-sm md:text-xl">Privacy</h6>
-              <ul class="mt-2 space-y-2 text-[clamp(.75rem,1vw,.95rem)]">
-                <li>Privacy Policy</li>
-              </ul>
-            </div>
 
-            <div class="col-span-3">
-              <h6 class="font-bold text-sm md:text-xl mt-2">
+            <div class="flex flex-col mx-4">
+              <h1 class="font-bold text-xs 2xl:text-xl">Web Map</h1>
+              <div class="flex justify-evenly">
+                <div class="flex flex-col">
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">Live Game</h1>
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">Home</h1>
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">Promotion</h1>
+                </div>
+                <div class="flex flex-col mx-2">
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">Support</h1>
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">FAQ</h1>
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">
+                    Terms & Conditions
+                  </h1>
+                </div>
+                <div class="flex flex-col">
+                  <h1 class="text-[8px] mt-2 2xl:text-[16px]">
+                    Privacy Policy
+                  </h1>
+                </div>
+              </div>
+
+            
+
+            <div class="col-span-3 sm:col-span-3">
+              <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-2">
                 Join our community
               </h6>
-              <div class="flex items-center gap-3 mt-2">
-                <img src="images/FbLogo.png" alt="" class="h-5 md:h-8 w-auto" />
+              <div class="flex items-center gap-2 sm:gap-3 mt-1 sm:mt-2">
+                <img
+                  src="images/FbLogo.png"
+                  alt=""
+                  class="h-4 sm:h-5 md:h-8 w-auto"
+                />
                 <img
                   src="images/teleLogo2.png"
                   alt=""
-                  class="h-5 md:h-8 w-auto"
+                  class="h-4 sm:h-5 md:h-8 w-auto"
                 />
               </div>
 
-              <h6 class="font-bold text-sm md:text-xl mt-4">Follow Us</h6>
-              <div class="flex items-center gap-3 mt-2">
-                <img src="images/FbLogo.png" alt="" class="h-5 md:h-8 w-auto" />
-                <img src="images/xlogo.png" alt="" class="h-5 md:h-8 w-auto" />
+              <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-3 sm:mt-4">
+                Follow Us
+              </h6>
+              <div
+                class="flex flex-wrap items-center gap-1 sm:gap-3 mt-1 sm:mt-2"
+              >
+                <img
+                  src="images/FbLogo.png"
+                  alt=""
+                  class="h-4 sm:h-5 md:h-8 w-auto"
+                />
+                <img
+                  src="images/xlogo.png"
+                  alt=""
+                  class="h-4 sm:h-5 md:h-8 w-auto"
+                />
                 <img
                   src="images/tiktoklogo.png"
                   alt=""
-                  class="h-5 md:h-8 w-auto"
+                  class="h-4 sm:h-5 md:h-8 w-auto"
                 />
                 <img
                   src="images/instagramLogo.png"
                   alt=""
-                  class="h-5 md:h-8 w-auto"
+                  class="h-4 sm:h-5 md:h-8 w-auto"
                 />
                 <img
                   src="images/youtubelogo.png"
                   alt=""
-                  class="h-5 md:h-8 w-auto"
+                  class="h-4 sm:h-5 md:h-8 w-auto"
                 />
               </div>
             </div>
           </div>
         </div>
 
-        <div class="flex justify-center items-center mt-3">
+        
+      </div>
+    </footer>
+    <div class="flex justify-center items-center my-2 sm:mt-3">
           <p
-            class="text-[10px] md:text-[12px] text-gray-800 text-center bg-white/60 rounded px-2 py-1"
+            class="text-[10px] md:text-[12px] text-gray-800 text-center bg-white/60 rounded px-2 py-0.5 sm:py-1"
           >
             ©2024-2025 WILYONARYO PLUS ALL RIGHT RESERVED
           </p>
         </div>
-      </div>
-    </footer>
 
-     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({
         duration: 1000,
         once: false,
+        offset: 150,
+        delay: 0,
+        easing: "ease-in-out",
+        mirror: true,
+        anchorPlacement: "top-bottom",
+      });
+
+      // Force AOS refresh on page load
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          AOS.refresh();
+        }, 100);
+      });
+
+      // Refresh AOS on scroll
+      let scrollTimeout;
+      window.addEventListener("scroll", function () {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function () {
+          AOS.refresh();
+        }, 50);
       });
     </script>
   </body>
