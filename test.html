@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Countdown (Tailwind + Alpine)</title>
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ["Poppins","ui-sans-serif","system-ui"] },
+          keyframes: {
+            tick: {
+              '0%':   { transform: 'rotateX(0deg)'   },
+              '60%':  { transform: 'rotateX(-18deg)' },
+              '100%': { transform: 'rotateX(0deg)'   },
+            },
+          },
+          animation: {
+            tick: 'tick .5s ease',
+          },
+          boxShadow: {
+            flap: '0 6px 20px rgba(0,0,0,.35)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Alpine.js -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    /* gives a subtle split-flap divider across each tile */
+    .split-line::after{
+      content:"";
+      position:absolute;
+      left:0; right:0; top:50%;
+      height:1px;
+      background: rgba(255,255,255,.12);
+      transform: translateY(-.5px);
+      pointer-events:none;
+    }
+  </style>
+</head>
+<body class="min-h-dvh grid place-items-center bg-gradient-to-b from-neutral-200 to-neutral-300 dark:from-neutral-900 dark:to-neutral-950 text-neutral-900 dark:text-neutral-50">
+
+<!-- ================= COUNTDOWN ================= -->
+<div
+  x-data="countdown({
+    // Pick ONE: absolute deadline OR relative seconds
+    // to: '2025-12-31T23:59:59',   // absolute ISO datetime (local time)
+    seconds: 43*3600 + 41*60 + 41   // demo matches the screenshot vibe
+  })"
+  x-init="start()"
+  class="w-full max-w-3xl px-6"
+>
+  <div class="flex items-end justify-center gap-5 sm:gap-8 select-none">
+
+    <!-- Tile -->
+    <div class="text-center">
+      <div class="relative split-line bg-neutral-900 text-white rounded-lg shadow-flap px-4 sm:px-6 py-3 sm:py-4 min-w-[86px] sm:min-w-[110px]">
+        <span
+          class="block font-extrabold tracking-widest text-3xl sm:text-5xl leading-none tabular-nums"
+          :class="animateH"
+          x-text="pad(hours)"
+        ></span>
+      </div>
+      <div class="mt-2 text-[10px] sm:text-xs font-semibold tracking-[0.14em] text-rose-500">HOURS</div>
+    </div>
+
+    <!-- Tile -->
+    <div class="text-center">
+      <div class="relative split-line bg-neutral-900 text-white rounded-lg shadow-flap px-4 sm:px-6 py-3 sm:py-4 min-w-[86px] sm:min-w-[110px]">
+        <span
+          class="block font-extrabold tracking-widest text-3xl sm:text-5xl leading-none tabular-nums"
+          :class="animateM"
+          x-text="pad(minutes)"
+        ></span>
+      </div>
+      <div class="mt-2 text-[10px] sm:text-xs font-semibold tracking-[0.14em] text-rose-500">MINUTES</div>
+    </div>
+
+    <!-- Tile -->
+    <div class="text-center">
+      <div class="relative split-line bg-neutral-900 text-white rounded-lg shadow-flap px-4 sm:px-6 py-3 sm:py-4 min-w-[86px] sm:min-w-[110px]">
+        <span
+          class="block font-extrabold tracking-widest text-3xl sm:text-5xl leading-none tabular-nums"
+          :class="animateS"
+          x-text="pad(seconds)"
+        ></span>
+      </div>
+      <div class="mt-2 text-[10px] sm:text-xs font-semibold tracking-[0.14em] text-rose-500">SECONDS</div>
+    </div>
+
+  </div>
+
+  <!-- Optional: small helper controls (remove if you don't want them) -->
+  <div class="mt-6 flex items-center justify-center gap-3 text-xs opacity-70">
+    <button @click="start()" class="px-3 py-1 rounded bg-neutral-800 text-white">Restart</button>
+    <button @click="pause()" class="px-3 py-1 rounded bg-neutral-700 text-white">Pause</button>
+    <button @click="resume()" class="px-3 py-1 rounded bg-neutral-700 text-white">Resume</button>
+  </div>
+</div>
+
+<script>
+  function countdown({ to = null, seconds = null } = {}) {
+    let timer = null;
+
+    const computeTarget = () => {
+      if (to) {
+        // interpret as local time
+        return new Date(to).getTime();
+      }
+      const now = Date.now();
+      const secs = Number(seconds ?? 0);
+      return now + Math.max(0, secs) * 1000;
+    };
+
+    return {
+      target: null,
+      total: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+
+      // small animation hooks
+      animateH: '', animateM: '', animateS: '',
+
+      pad(n){ return String(n).padStart(2,'0'); },
+
+      tick(){
+        const now = Date.now();
+        const diff = Math.max(0, Math.floor((this.target - now)/1000)); // in seconds
+        if (diff !== this.total) {
+          // detect unit changes to trigger a subtle flip animation
+          const prev = { h: this.hours, m: this.minutes, s: this.seconds };
+          this.total = diff;
+          this.hours   = Math.floor(diff / 3600);
+          this.minutes = Math.floor(diff / 60) % 60;
+          this.seconds = diff % 60;
+
+          if (this.hours !== prev.h)   { this.animateH = 'animate-tick'; setTimeout(()=>this.animateH='', 520); }
+          if (this.minutes !== prev.m) { this.animateM = 'animate-tick'; setTimeout(()=>this.animateM='', 520); }
+          if (this.seconds !== prev.s) { this.animateS = 'animate-tick'; setTimeout(()=>this.animateS='', 520); }
+        }
+        if (diff <= 0) { this.stop(); }
+      },
+
+      start(){
+        this.stop();
+        this.target = computeTarget();
+        this.tick();
+        timer = setInterval(() => this.tick(), 1000);
+      },
+      stop(){
+        if (timer) { clearInterval(timer); timer = null; }
+      },
+      pause(){ this.stop(); },
+      resume(){
+        // resume from remaining seconds
+        this.target = Date.now() + this.total*1000;
+        this.stop();
+        timer = setInterval(() => this.tick(), 1000);
+      },
+    }
+  }
+</script>
+
+</body>
+</html>
