@@ -65,6 +65,7 @@
 
       html {
         scroll-behavior: smooth;
+        overflow-x: hidden; /* prevent horizontal scroll globally */
       }
 
       body {
@@ -161,7 +162,7 @@
           </p>
           <a
             href="register.php"
-            class="mt-8 inline-flex items-center justify-center h-10 lg:h-12 px-6 rounded-full font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+            class="mt-8 inline-flex items-center justify-center h-10 px-6 lg:p-8 rounded-full font-semibold lg:text-2xl text-white bg-blue-600 hover:bg-blue-700 transition-colors"
           >
             Buy Tickets
           </a>
@@ -406,22 +407,37 @@
     <section class="max-w-screen-2xl mx-auto px-4 md:px-6 mt-16">
       <div class="relative flex justify-center items-center">
         <img
-          src="images\PrizePool.png"
+          src="images/PrizePool.png"
           alt=""
           class="w-[92%] md:w-[90%] rounded-lg h-auto md:h-[320px] object-cover"
         />
+        <!-- overlay: centered on mobile; shifted only on lg -->
         <div
-          class="absolute inset-0 flex items-center translate-x-[23.7%] text-[3.333px] lg:translate-x-[290px] lg:text-[20px]  font-bold"
+          class="absolute inset-0 flex items-center justify-center lg:justify-start"
         >
-          <table>
-            <tr><td class="font-bold"><span class="">JACKPOT:</span> ₱1,200,000</td></tr>
-            <tr><td class="font-bold"><span class="">4 LETTERS:</span> ₱30,000</td></tr>
-            <tr><td class="font-bold"><span class="">3 LETTERS + COLOR:</span> ₱10,000</td></tr>
-            <tr><td class="font-bold"><span class="">3 LETTERS:</span> ₱500</td></tr>
-            <tr><td class="font-bold"><span class="">2 LETTERS + COLOR:</span> ₱300</td></tr>  
-          </table>
-            
-          </h3>
+          <div
+            class="translate-x-0 lg:translate-x-[290px] text-[3.333px] lg:text-[20px] font-bold"
+          >
+            <table>
+              <tr>
+                <td class="font-bold"><span>JACKPOT:</span> ₱1,200,000</td>
+              </tr>
+              <tr>
+                <td class="font-bold"><span>4 LETTERS:</span> ₱30,000</td>
+              </tr>
+              <tr>
+                <td class="font-bold">
+                  <span>3 LETTERS + COLOR:</span> ₱10,000
+                </td>
+              </tr>
+              <tr>
+                <td class="font-bold"><span>3 LETTERS:</span> ₱500</td>
+              </tr>
+              <tr>
+                <td class="font-bold"><span>2 LETTERS + COLOR:</span> ₱300</td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </section>
@@ -466,43 +482,69 @@
           </div>
 
           <!-- Right -->
-
-            <div class="flex flex-col mx-4">
-              <h1 class="font-bold text-xs 2xl:text-xl">Web Map</h1>
-              <div class="flex lg:gap-32">
-                <div class="flex flex-col">
-                  <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Live Game</a>
-                  <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Home</a>
-                  <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Promotion</a>
-                </div>
-                <div class="flex flex-col mx-2">
-                  <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Support</a>
-                  <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">FAQs</a>
-                  <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Terms and Conditions</a>
-                </div>
-                <div class="flex flex-col">
-                  <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Privacy Policy</a>
-                </div>
+          <div class="flex flex-col mx-4">
+            <h1 class="font-bold text-xs 2xl:text-xl">Web Map</h1>
+            <div class="flex lg:gap-32">
+              <div class="flex flex-col">
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >Live Game</a
+                >
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >Home</a
+                >
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >Promotion</a
+                >
               </div>
-
-            
+              <div class="flex flex-col mx-2">
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >Support</a
+                >
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >FAQs</a
+                >
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >Terms and Conditions</a
+                >
+              </div>
+              <div class="flex flex-col">
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >Privacy Policy</a
+                >
+              </div>
+            </div>
 
             <div class="col-span-3 sm:col-span-3">
               <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-2">
                 Join our community
               </h6>
               <div class="flex items-center gap-2 sm:gap-3 mt-1 sm:mt-2">
-                <a href=""><img
-                  src="images/FbLogo.png"
-                  alt=""
-                  class="h-4 sm:h-5 md:h-8 w-auto"
+                <a href=""
+                  ><img
+                    src="images/FbLogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
-                <a href=""><img
-                  src="images/teleLogo2.png"
-                  alt=""
-                  class="h-4 sm:h-5 md:h-8 w-auto"
+                <a href=""
+                  ><img
+                    src="images/teleLogo2.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
-                
               </div>
 
               <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-3 sm:mt-4">
@@ -511,50 +553,54 @@
               <div
                 class="flex flex-wrap items-center gap-1 sm:gap-3 mt-1 sm:mt-2"
               >
-              <a href=""><img
-                  src="images/FbLogo.png"
-                  alt=""
-                  class="h-4 sm:h-5 md:h-8 w-auto"
+                <a href=""
+                  ><img
+                    src="images/FbLogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
-                
-                <a href=""><img
-                  src="images/xlogo.png"
-                  alt=""
-                  class="h-4 sm:h-5 md:h-8 w-auto"
+
+                <a href=""
+                  ><img
+                    src="images/xlogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
-                
-                <a href=""><img
-                  src="images/tiktoklogo.png"
-                  alt=""
-                  class="h-4 sm:h-5 md:h-8 w-auto"
+
+                <a href=""
+                  ><img
+                    src="images/tiktoklogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
-                
-                <a href=""><img
-                  src="images/instagramLogo.png"
-                  alt=""
-                  class="h-4 sm:h-5 md:h-8 w-auto"
+
+                <a href=""
+                  ><img
+                    src="images/instagramLogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
-                
-                <a href=""><img
-                  src="images/youtubelogo.png"
-                  alt=""
-                  class="h-4 sm:h-5 md:h-8 w-auto"
+
+                <a href=""
+                  ><img
+                    src="images/youtubelogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
               </div>
             </div>
           </div>
         </div>
-
-        
       </div>
     </footer>
+
     <div class="flex justify-center items-center my-2 sm:mt-3">
-          <p
-            class="text-[10px] md:text-[12px] text-gray-800 text-center bg-orange-50/60 rounded px-2 py-0.5 sm:py-1"
-          >
-            ©2024-2025 WILYONARYO PLUS ALL RIGHT RESERVED
-          </p>
-        </div>
+      <p
+        class="text-[10px] md:text-[12px] text-gray-800 text-center bg-orange-50/60 rounded px-2 py-0.5 sm:py-1"
+      >
+        ©2024-2025 WILYONARYO PLUS ALL RIGHT RESERVED
+      </p>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
