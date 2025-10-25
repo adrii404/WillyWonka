@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+  script-src 'self' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval';
+  style-src  'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com 'unsafe-inline';
+  font-src   'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://unpkg.com;
+  img-src 'self' data:;
+  connect-src 'self';
+  base-uri 'self';
+  form-action 'self'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to play?</title>
+
+    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Alpine -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind = tailwind || {};
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+              luckiest: ['"Luckiest Guy"', "cursive"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      [x-cloak] {
+        display: none !important;
+      }
+
+      [data-aos="zoom-out-up"] {
+        transform: translateY(50%) scale(0.1);
+        opacity: 0;
+      }
+      [data-aos="zoom-out-up"].aos-animate {
+        transform: translateY(0) scale(3);
+        opacity: 1;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen relative bg-gradient-to-b from-orange-300 via-orange-200 to-orange-100 font-sans"
+    x-data="prizeChart()"
+    x-cloak
+  >
+    <!-- Full-viewport background -->
+    <div
+      class="fixed inset-0 bg-[url('images/backgroundPhoto1.png')] bg-cover bg-center bg-no-repeat opacity-25 -z-10"
+    ></div>
+
+    <header
+      class="bg-gradient-to-b from-blue-700 via-blue-600 to-blue-600 shadow-lg rounded-b-[20px]"
+    >
+      <div class="max-w-screen-2xl mx-auto px-2.5 md:px-5">
+        <nav class="flex items-center justify-between py-1 md:py-2">
+          <!-- Left: Logo -->
+          <a href="#" class="shrink-0">
+            <img
+              src="images/logo.gif"
+              alt="Logo"
+              class="h-7 w-auto md:h-12 2xl:h-24"
+            />
+          </a>
+
+          <!-- Center: Nav links -->
+          <div
+            class="flex items-center justify-center gap-4 lg:gap-28 text-[8px] lg:text-xl"
+          >
+            <a href="homeResponsiveFix.html" class="font-semibold text-white hover:text-orange-300"
+              >Home</a
+            >
+            <a href="#" class="font-semibold text-white hover:text-orange-300"
+              >Results</a
+            >
+            <a href="#" class="font-semibold text-white hover:text-orange-300"
+              >How to play?</a
+            >
+            <a href="#" class="font-semibold text-white hover:text-orange-300"
+              >Contact Us</a
+            >
+          </div>
+
+          <!-- Right: CTAs -->
+          <div
+            class="flex items-center gap-1.5 lg:gap-20 text-[8px] lg:text-xl"
+          >
+            <a
+              href="loginForm.html"
+              class="bg-gray-200 rounded-full px-2 py-0.5 md:px-3 md:py-1.5 font-semibold hover:bg-gray-300"
+              >Login</a
+            >
+            <a
+              href="register.php"
+              class="bg-orange-500 rounded-full px-2 py-0.5 md:px-3 md:py-1.5 font-semibold text-white hover:bg-orange-600"
+              >Register</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="bg-blue-50/80 mx-8 my-4 rounded-md py-3">
+      <div class="flex flex-col justify-center gap-3 text-center mx-4">
+        <h1 class="text-lg font-bold lg:text-2xl">5 Ways to Win!</h1>
+        <p class="justify-center text-center text-xs lg:text-lg">
+          Jackpot winners may choose to receive their prize as an annuity, paid
+          in 30 graduated payments over 29 years, or a lump-sum payment.
+        </p>
+        <p class="justify-center text-center text-xs lg:text-lg">
+          All lower-tier prizes are set cash amounts.
+        </p>
+        <p class="justify-center text-center text-xs lg:text-lg">
+          In California, prize payout amounts are pari-mutuel and determined by
+          sales and the number of winners.
+        </p>
+      </div>
+
+      <!-- Compact Table (mobile-friendly, no horizontal scroll) -->
+      <div class="mt-6 rounded-xl border mx-2 overflow-x-hidden lg:mx-40  ">
+        <table class="min-w-full table-fixed text-[10px] sm:text-xs lg:text-lg ">
+          <colgroup>
+            <col class="w-[44%] sm:w-[46%]" />
+            <col class="w-[36%] sm:w-[34%]" />
+            <col class="w-[20%] sm:w-[20%]" />
+          </colgroup>
+          <thead
+            class="bg-blue-600 text-white text-[10px] sm:text-xs lg:text-2xl"
+          >
+            <tr>
+              <th class="text-left font-semibold px-2 py-1.5 sm:px-3 sm:py-2">
+                Match
+              </th>
+              <th class="text-left font-semibold px-2 py-1.5 sm:px-3 sm:py-2">
+                Visual
+              </th>
+              <th class="text-right font-semibold px-2 py-1.5 sm:px-3 sm:py-2">
+                Prize
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <template x-for="t in tiers" :key="t.key + '-row'">
+              <tr class="bg-orange-50/70">
+                <!-- Match -->
+                <td
+                  class="px-2 py-2 sm:px-3 sm:py-2 font-medium leading-tight truncate lg:text-lg text-[7px]"
+                  x-text="t.label"
+                ></td>
+
+                <!-- Visual (history-style letters + color), shrunk for mobile -->
+                <td class="px-2 py-2 sm:px-3 sm:py-2">
+                  <div class="flex items-center gap-1 sm:gap-2">
+                    <span class="inline-flex gap-0.5 sm:gap-1">
+                      <template x-for="(_, idx) in arr(t.letters)" :key="idx">
+                        <span
+                          class="w-5 h-5 sm:w-6 sm:h-6 rounded-[4px] bg-white grid place-items-center font-bold leading-none"
+                          x-text="sampleLetter(idx)"
+                        ></span>
+                      </template>
+                    </span>
+                    <template x-if="t.color">
+                      <span
+                        class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-red-500"
+                        title="Color"
+                      ></span>
+                    </template>
+                  </div>
+                </td>
+
+                <!-- Prize -->
+                <td
+                  class="px-2 py-2 sm:px-3 sm:py-2 text-right font-bold tabular-nums leading-tight"
+                  x-text="formatP(t)"
+                ></td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Next Draw -->
+      <section class="max-w-screen-2xl mx-auto px-3 mt-6 lg:mx-40">
+        <div
+          x-data="{
+          target:new Date(Date.now()+1000*60*60*24).toISOString(), // demo: +24h
+          now:Date.now(), t:null,
+          get left(){ return Math.max(0, new Date(this.target) - this.now) },
+          fmt(ms){ const s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor(s%3600/60),sec=s%60; return `${h}h ${m}m ${sec}s`; },
+          start(){ this.t=setInterval(()=>this.now=Date.now(),1000) },
+          stop(){ clearInterval(this.t) }
+        }"
+          x-init="start()"
+          class="rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 text-white p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg lg:h-40 xl:h-48"
+        >
+          <div>
+            <h3 class="text-xl md:text-2xl font-bold justify-center text-center">Next Draw</h3>
+            <p class="text-white/90 text-sm">Closes soon — don’t miss out.</p>
+          </div>
+          <div class="text-2xl md:text-3xl font-extrabold tabular-nums">
+            <span x-text="fmt(left)"></span>
+          </div>
+          <div class="flex items-center gap-3">
+            <a
+              href="register.php"
+              class="px-4 py-2 rounded-full bg-orange-400 hover:bg-orange-500 font-semibold"
+              >Register</a
+            >
+            <a
+              href="loginForm.html"
+              class="px-4 py-2 rounded-full bg-white text-blue-700 hover:bg-blue-50 font-semibold"
+              >Play Now</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Winning Combination History -->
+      <section class="max-w-screen-2xl mx-auto lg:mx-40 px-3 mt-6 pb-8">
+        <div class="bg-blue-50/80 rounded-xl border border-blue-200">
+          <div class="px-4 py-2 bg-blue-600 text-white font-bold rounded-t-xl">
+            Winning Combination History
+          </div>
+          <ul class="divide-y divide-blue-100 text-sm">
+            <li class="flex items-center justify-between px-4 py-2">
+              <span class="font-medium">Oct 24, 12:00</span>
+              <span class="flex items-center gap-2">
+                <span class="inline-flex gap-1">
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >A</span
+                  >
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >R</span
+                  >
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >M</span
+                  >
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >Y</span
+                  >
+                </span>
+                <span
+                  class="w-4 h-4 rounded-full bg-red-500"
+                  title="Color"
+                ></span>
+              </span>
+            </li>
+            <li class="flex items-center justify-between px-4 py-2">
+              <span class="font-medium">Oct 24, 12:03</span>
+              <span class="flex items-center gap-2">
+                <span class="inline-flex gap-1">
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >B</span
+                  >
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >K</span
+                  >
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >W</span
+                  >
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >N</span
+                  >
+                </span>
+                <span
+                  class="w-4 h-4 rounded-full bg-yellow-400"
+                  title="Color"
+                ></span>
+              </span>
+            </li>
+            <li class="flex items-center justify-between px-4 py-2">
+              <span class="font-medium">Oct 24, 12:03</span>
+              <span class="flex items-center gap-2">
+                <span class="inline-flex gap-1">
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >Y</span
+                  >
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >K</span
+                  >
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >W</span
+                  >
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >O</span
+                  >
+                </span>
+                <span
+                  class="w-4 h-4 rounded-full bg-green-400"
+                  title="Color"
+                ></span>
+              </span>
+            </li>
+            <li class="flex items-center justify-between px-4 py-2">
+              <span class="font-medium">Oct 24, 12:03</span>
+              <span class="flex items-center gap-2">
+                <span class="inline-flex gap-1">
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >A</span
+                  >
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >D</span
+                  >
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >T</span
+                  >
+                  <span
+                    class="w-6 h-6 rounded-md bg-white grid place-items-center font-bold"
+                    >I</span
+                  >
+                </span>
+                <span
+                  class="w-4 h-4 rounded-full bg-blue-400"
+                  title="Color"
+                ></span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer class="max-w-screen-2xl mx-auto px-4 md:px-6 mt-6 md:mt-10">
+      <div
+        class="text-white bg-blue-400/65 rounded-lg p-3 sm:p-4 md:p-6 border-2 border-blue-600"
+      >
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+          <!-- Left -->
+          <div class="leading-snug">
+            <h4 class="font-bold text-base sm:text-lg md:text-2xl">
+              Wilyonaryo™
+            </h4>
+            <p class="text-[7px] lg:text-lg mt-1 sm:mt-2">
+              Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
+              Clark Air Base, Philippines
+            </p>
+            <h5 class="font-bold text-xs sm:text-sm md:text-xl mt-2 sm:mt-3">
+              Official License & Gaming Responsibility
+            </h5>
+            <p class="text-[7px] lg:text-lg mt-1 sm:mt-2">
+              Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
+              Clark Air Base, Philippines
+            </p>
+            <img
+              src="images/pagcor-logo.png"
+              alt=""
+              class="h-5 w-auto sm:h-6 md:h-10 mt-2 sm:mt-2 md:ml-2"
+            />
+            <p class="text-[7px] sm:text-[11px] md:text[16px] mt-2 sm:mt-2">
+              Gambling doesn't guarantee earnings or financial improvement. Stay
+              within your limits. Need Help? Contact PAGCOR at (02) 8527-9831 or
+              visit www.pagcor.ph/regulatory/responsible-gaming.php
+            </p>
+          </div>
+
+          <!-- Right -->
+          <div class="flex flex-col mx-4">
+            <h1 class="font-bold text-xs 2xl:text-xl">Web Map</h1>
+            <div class="flex lg:gap-32">
+              <div class="flex flex-col">
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >Live Game</a
+                >
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >Home</a
+                >
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >Promotion</a
+                >
+              </div>
+              <div class="flex flex-col mx-2">
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >Support</a
+                >
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >FAQs</a
+                >
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >Terms and Conditions</a
+                >
+              </div>
+              <div class="flex flex-col">
+                <a
+                  href=""
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                  >Privacy Policy</a
+                >
+              </div>
+            </div>
+
+            <div class="col-span-3 sm:col-span-3">
+              <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-2">
+                Join our community
+              </h6>
+              <div class="flex items-center gap-2 sm:gap-3 mt-1 sm:mt-2">
+                <a href=""
+                  ><img
+                    src="images/FbLogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
+                /></a>
+                <a href=""
+                  ><img
+                    src="images/teleLogo2.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
+                /></a>
+              </div>
+
+              <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-3 sm:mt-4">
+                Follow Us
+              </h6>
+              <div
+                class="flex flex-wrap items-center gap-1 sm:gap-3 mt-1 sm:mt-2"
+              >
+                <a href=""
+                  ><img
+                    src="images/FbLogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
+                /></a>
+                <a href=""
+                  ><img
+                    src="images/xlogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
+                /></a>
+                <a href=""
+                  ><img
+                    src="images/tiktoklogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
+                /></a>
+                <a href=""
+                  ><img
+                    src="images/instagramLogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
+                /></a>
+                <a href=""
+                  ><img
+                    src="images/youtubelogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function prizeChart() {
+        return {
+          multiplier: 1,
+          tiers: [
+            {
+              key: "jackpot",
+              label: "4 LETTERS + COLOR (JACKPOT)",
+              letters: 4,
+              color: true,
+              base: 1200000,
+              fixed: true,
+            },
+            {
+              key: "four",
+              label: "4 LETTERS",
+              letters: 4,
+              color: false,
+              base: 30000,
+              fixed: false,
+            },
+            {
+              key: "3c",
+              label: "3 LETTERS + COLOR",
+              letters: 3,
+              color: true,
+              base: 10000,
+              fixed: false,
+            },
+            {
+              key: "3",
+              label: "3 LETTERS",
+              letters: 3,
+              color: false,
+              base: 500,
+              fixed: false,
+            },
+            {
+              key: "2c",
+              label: "2 LETTERS + COLOR",
+              letters: 2,
+              color: true,
+              base: 300,
+              fixed: false,
+            },
+          ],
+          peso(n) {
+            return "₱" + Number(n).toLocaleString("en-PH");
+          },
+          formatP(t) {
+            return t.fixed
+              ? this.peso(t.base)
+              : this.peso(t.base * (this.multiplier || 1));
+          },
+
+          // helpers for Visual column
+          arr(n) {
+            return Array.from({ length: n });
+          },
+          sampleLetter(i) {
+            const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            return alphabet[i % alphabet.length];
+          },
+        };
+      }
+    </script>
+  </body>
+</html>
