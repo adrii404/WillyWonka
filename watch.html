@@ -52,7 +52,7 @@
 
         /* safer AOS initial state */
         [data-aos="zoom-out-up"] {
-            transform: translateY(6%) scale(0.9);
+            transform: translateY(6%) scale(.9);
             opacity: 0;
         }
 
@@ -61,21 +61,12 @@
             opacity: 1;
         }
 
-        /* --- Zoom-proof scaffolding -----------------------------------------
-         1) Keep content nicely centered and narrow on ultra-wide / zoomed-out
-         2) Fluid root font for gentle scaling without breaking layout          */
         html {
             scroll-behavior: smooth;
             overflow-x: clip;
         }
 
-        body {
-            margin: 0;
-            width: 100%;
-        }
-
         :root {
-            /* ~14–16px root size that eases down slightly on huge viewports */
             --fs-root: clamp(14px, 0.85vw + 8px, 16px);
         }
 
@@ -83,14 +74,15 @@
             font-size: var(--fs-root);
         }
 
-        /* A reusable container that never explodes in width */
+        /* Reusable site container */
         .site {
             max-width: 2000px;
+            /* keep your setting */
             margin-inline: auto;
             padding-inline: clamp(12px, 2.5vw, 24px);
         }
 
-        /* Make media never overflow their parent */
+        /* Media safety */
         img,
         svg,
         video {
@@ -100,12 +92,14 @@
     </style>
 </head>
 
-<body class="min-h-screen relative bg-gradient-to-b from-orange-300 via-orange-200 to-orange-100 font-sans"
+<body
+    class="min-h-screen flex flex-col relative bg-gradient-to-b from-orange-300 via-orange-200 to-orange-100 font-sans"
     x-data="prizeChart()" x-cloak>
     <!-- Full-viewport background -->
     <div class="fixed inset-0 bg-[url('images/backgroundPhoto1.png')] bg-cover bg-center bg-no-repeat opacity-25 -z-10">
     </div>
 
+    <!-- HEADER -->
     <header class="bg-gradient-to-b from-blue-700 via-blue-600 to-blue-600 shadow-lg rounded-b-[20px]">
         <div class="max-w-screen-2xl mx-auto px-2.5 md:px-5">
             <nav class="flex items-center justify-between py-1 md:py-2">
@@ -133,19 +127,23 @@
         </div>
     </header>
 
-    <main class="site">
-        <div class="relative overflow-hidden bg-blue-50/80 my-4 rounded-md py-6 w-full lg:w-[90%] mx-auto p-1  lg:p-5  ">
-            <h1 class="font-bold text-lg lg:text-3xl lg:my-4">Watch Wilyonaryo Now!</h1>
-            <p class="font-medium text-md lg:text-xl lg:my-4">Powerball® drawings are broadcast live every Monday,
-                Wednesday,
+    <!-- MAIN -->
+    <main class="site flex-1">
+        <div class="relative overflow-hidden bg-blue-50/80 my-4 rounded-md py-6 w-full lg:w-[90%] mx-auto p-3 lg:p-5">
+            <h1 class="font-bold text-xl my-2 lg:text-3xl lg:my-4 text-center">Watch Wilyonaryo Now!</h1>
+
+            <p class="font-medium text-xs lg:text-xl lg:my-4">
+                Powerball® drawings are broadcast live every Monday, Wednesday,
                 and Saturday at 10:59 pm ET from the Florida Lottery draw studio in Tallahassee.
-
+                <br><br>
                 Powerball and Double Play® drawings are also live streamed right here on the Powerball website.
+                <br><br>
+                Check out our YouTube channel for more draw show clips.
+            </p>
 
-                Check out our YouTube channel for more draw show clips.</p>
             <a href="#" class="flex w-fit mx-auto items-center justify-center
-         text-white bg-blue-600 px-4 py-2 lg:px-6 lg:py-3
-         rounded-full text-center lg:w-70 lg:text-xl lg:my-4">
+               text-white bg-blue-600 px-4 py-2 lg:px-6 lg:py-3
+               rounded-full text-center my-2 lg:text-xl lg:my-4">
                 View our Youtube channel
             </a>
 
@@ -154,30 +152,28 @@
                     class="h-auto w-[200px] sm:w-[520px] lg:w-[820px] max-w-none" />
             </div>
         </div>
-
     </main>
 
-    <footer class="site mt-6 md:mt-10">
+    <!-- FOOTER (pinned to bottom) -->
+    <footer class="mt-auto max-w-screen-2xl mx-auto px-4 md:px-6 mt-6 md:mt-10">
         <div class="text-white bg-blue-400/65 rounded-lg p-3 sm:p-4 md:p-6 border-2 border-blue-600">
             <div class="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
                 <!-- Left -->
                 <div class="leading-snug">
-                    <h4 class="font-bold text-[clamp(1rem,1.8vw,1.5rem)]">
-                        Wilyonaryo™
-                    </h4>
-                    <p class="text-[clamp(.75rem,1vw,1.05rem)] mt-2">
+                    <h4 class="font-bold text-base sm:text-lg md:text-2xl">Wilyonaryo™</h4>
+                    <p class="text-[7px] lg:text-lg mt-1 sm:mt-2">
                         Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
                         Clark Air Base, Philippines
                     </p>
-                    <h5 class="font-bold text-[clamp(.9rem,1.4vw,1.25rem)] mt-3">
+                    <h5 class="font-bold text-xs sm:text-sm md:text-xl mt-2 sm:mt-3">
                         Official License & Gaming Responsibility
                     </h5>
-                    <p class="text-[clamp(.75rem,1vw,1.05rem)] mt-2">
+                    <p class="text-[7px] lg:text-lg mt-1 sm:mt-2">
                         Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
                         Clark Air Base, Philippines
                     </p>
-                    <img src="images/pagcor-logo.png" alt="" class="h-10 w-auto mt-2" />
-                    <p class="text-[clamp(.7rem,.95vw,1rem)] mt-2">
+                    <img src="images/pagcor-logo.png" alt="" class="h-5 w-auto sm:h-6 md:h-10 mt-2 sm:mt-2 md:ml-2" />
+                    <p class="text-[7px] sm:text-[11px] md:text-[16px] mt-2 sm:mt-2">
                         Gambling doesn't guarantee earnings or financial improvement. Stay
                         within your limits. Need Help? Contact PAGCOR at (02) 8527-9831 or
                         visit www.pagcor.ph/regulatory/responsible-gaming.php
@@ -185,51 +181,57 @@
                 </div>
 
                 <!-- Right -->
-                <div class="flex flex-col mx-2">
-                    <h1 class="font-bold text-[clamp(.9rem,1.2vw,1.25rem)]">Web Map</h1>
-                    <div class="flex gap-[clamp(1rem,8vw,8rem)]">
+                <div class="flex flex-col mx-4">
+                    <h1 class="font-bold text-xs 2xl:text-xl">Web Map</h1>
+                    <div class="flex lg:gap-32">
                         <div class="flex flex-col">
-                            <a href="" class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline">Live Game</a>
-                            <a href="" class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline">Home</a>
-                            <a href="" class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline">Promotion</a>
+                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Live Game</a>
+                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Home</a>
+                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Promotion</a>
                         </div>
                         <div class="flex flex-col mx-2">
-                            <a href="" class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline">Support</a>
-                            <a href="" class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline">FAQs</a>
-                            <a href="" class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline">Terms and
-                                Conditions</a>
+                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Support</a>
+                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">FAQs</a>
+                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Terms and Conditions</a>
                         </div>
                         <div class="flex flex-col">
-                            <a href="" class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline">Privacy Policy</a>
+                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Privacy Policy</a>
                         </div>
                     </div>
 
                     <div class="col-span-3 sm:col-span-3">
-                        <h6 class="font-bold text-[clamp(.9rem,1.2vw,1.25rem)] mt-2">
-                            Join our community
-                        </h6>
-                        <div class="flex items-center gap-3 mt-2">
-                            <a href=""><img src="images/FbLogo.png" alt="" class="h-8 w-auto" /></a>
-                            <a href=""><img src="images/teleLogo2.png" alt="" class="h-8 w-auto" /></a>
+                        <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-2">Join our community</h6>
+                        <div class="flex items-center gap-2 sm:gap-3 mt-1 sm:mt-2">
+                            <a href=""><img src="images/FbLogo.png" alt="" class="h-4 sm:h-5 md:h-8 w-auto" /></a>
+                            <a href=""><img src="images/teleLogo2.png" alt="" class="h-4 sm:h-5 md:h-8 w-auto" /></a>
                         </div>
 
-                        <h6 class="font-bold text-[clamp(.9rem,1.2vw,1.25rem)] mt-4">
-                            Follow Us
-                        </h6>
-                        <div class="flex flex-wrap items-center gap-3 mt-2">
-                            <a href=""><img src="images/FbLogo.png" alt="" class="h-8 w-auto" /></a>
-                            <a href=""><img src="images/xlogo.png" alt="" class="h-8 w-auto" /></a>
-                            <a href=""><img src="images/tiktoklogo.png" alt="" class="h-8 w-auto" /></a>
-                            <a href=""><img src="images/instagramLogo.png" alt="" class="h-8 w-auto" /></a>
-                            <a href=""><img src="images/youtubelogo.png" alt="" class="h-8 w-auto" /></a>
+                        <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-3 sm:mt-4">Follow Us</h6>
+                        <div class="flex flex-wrap items-center gap-1 sm:gap-3 mt-1 sm:mt-2">
+                            <a href=""><img src="images/FbLogo.png" alt="" class="h-4 sm:h-5 md:h-8 w-auto" /></a>
+                            <a href=""><img src="images/xlogo.png" alt="" class="h-4 sm:h-5 md:h-8 w-auto" /></a>
+                            <a href=""><img src="images/tiktoklogo.png" alt="" class="h-4 sm:h-5 md:h-8 w-auto" /></a>
+                            <a href=""><img src="images/instagramLogo.png" alt=""
+                                    class="h-4 sm:h-5 md:h-8 w-auto" /></a>
+                            <a href=""><img src="images/youtubelogo.png" alt="" class="h-4 sm:h-5 md:h-8 w-auto" /></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </footer>
+    <div class="flex justify-center items-center my-2 sm:mt-3">
+      <p
+        class="text-[10px] md:text-[12px] text-gray-800 text-center bg-orange-50/60 rounded px-2 py-0.5 sm:py-1"
+      >
+        ©2024-2025 WILYONARYO PLUS ALL RIGHT RESERVED
+      </p>
+    </div>
 
-
-    <body>
+    <script>
+        function prizeChart() {
+            return { /* stub to keep Alpine happy if referenced elsewhere */ };
+        }
+    </script>
+</body>
 
 </html>

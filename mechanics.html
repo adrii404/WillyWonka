@@ -136,10 +136,14 @@
           <div
             class="flex items-center justify-center gap-4 lg:gap-28 text-[8px] lg:text-xl"
           >
-            <a href="homeResponsiveFix.html" class="font-semibold text-white hover:text-orange-400"
+            <a
+              href="homeResponsiveFix.html"
+              class="font-semibold text-white hover:text-orange-400"
               >Home</a
             >
-            <a href="watch.html" class="font-semibold text-white hover:text-orange-400"
+            <a
+              href="watch.html"
+              class="font-semibold text-white hover:text-orange-400"
               >Watch</a
             >
             <a
@@ -173,9 +177,7 @@
 
     <main class="site">
       <div class="bg-blue-50/80 my-4 rounded-md py-3">
-        <div
-          class="flex flex-col justify-center gap-3 text-center mx-8 "
-        >
+        <div class="flex flex-col justify-center gap-3 text-center mx-8">
           <h1 class="font-bold text-[clamp(1.25rem,3.5vw,2.75rem)]">
             How to play?
           </h1>
@@ -201,7 +203,7 @@
             advertised jackpot annuity is $150 million or less.
           </p>
         </div>
-        <div class="flex flex-col justify-center gap-3 text-center mx-4">
+        <div class="flex flex-col justify-center gap-3 text-center mx-4 my-2">
           <h1 class="font-bold text-[clamp(1.25rem,3.5vw,2.75rem)]">
             5 Ways to Win!
           </h1>
@@ -218,64 +220,70 @@
           </p>
         </div>
 
-        <!-- Responsive table: never breaks, scrolls if needed -->
-        <div class="mt-6 rounded-xl border mx-2 lg:mx-8 overflow-x-auto">
-          <table
-            class="min-w-[720px] w-full table-fixed text-[clamp(.7rem,1vw,1rem)]"
-          >
-            <colgroup>
-              <col class="w-[44%]" />
-              <col class="w-[36%]" />
-              <col class="w-[20%]" />
-            </colgroup>
-            <thead
-              class="bg-blue-600 text-white text-[clamp(.8rem,1.4vw,1.4rem)]"
-            >
-              <tr>
-                <th class="text-left font-semibold px-3 py-2">Match</th>
-                <th class="text-left font-semibold px-3 py-2">Visual</th>
-                <th class="text-right font-semibold px-3 py-2">Prize</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-200">
-              <template x-for="t in tiers" :key="t.key + '-row'">
-                <tr class="bg-orange-50/70">
-                  <!-- Match -->
-                  <td
-                    class="px-3 py-2 font-medium leading-tight truncate"
-                    x-text="t.label"
-                  ></td>
+       <!-- Responsive table: tighter on mobile, original on ≥sm -->
+<div class="mt-6 rounded-xl border mx-2 lg:mx-8 overflow-x-auto">
+  <table
+    class="min-w-[560px] md:min-w-[720px] w-full table-fixed
+           text-[10px] sm:text-[clamp(.7rem,1vw,1rem)]"
+  >
+    <colgroup>
+      <col class="w-[50%] sm:w-[44%]" />
+      <col class="w-[32%] sm:w-[36%]" />
+      <col class="w-[18%] sm:w-[20%]" />
+    </colgroup>
 
-                  <!-- Visual -->
-                  <td class="px-3 py-2">
-                    <div class="flex items-center gap-2">
-                      <span class="inline-flex gap-1">
-                        <template x-for="(_, idx) in arr(t.letters)" :key="idx">
-                          <span
-                            class="w-6 h-6 rounded-[4px] bg-white grid place-items-center font-bold leading-none"
-                            x-text="sampleLetter(idx)"
-                          ></span>
-                        </template>
-                      </span>
-                      <template x-if="t.color">
-                        <span
-                          class="w-4 h-4 rounded-full bg-red-500"
-                          title="Color"
-                        ></span>
-                      </template>
-                    </div>
-                  </td>
+    <thead
+      class="bg-blue-600 text-white
+             text-[11px] sm:text-[clamp(.8rem,1.4vw,1.4rem)]"
+    >
+      <tr>
+        <th class="text-left font-semibold px-2 py-1 sm:px-3 sm:py-2">Match</th>
+        <th class="text-left font-semibold px-2 py-1 sm:px-3 sm:py-2">Visual</th>
+        <th class="text-right font-semibold px-2 py-1 sm:px-3 sm:py-2">Prize</th>
+      </tr>
+    </thead>
 
-                  <!-- Prize -->
-                  <td
-                    class="px-3 py-2 text-right font-bold tabular-nums leading-tight"
-                    x-text="formatP(t)"
-                  ></td>
-                </tr>
+    <tbody class="divide-y divide-slate-200">
+      <template x-for="t in tiers" :key="t.key + '-row'">
+        <tr class="bg-orange-50/70">
+          <!-- Match -->
+          <td
+            class="px-2 py-1 sm:px-3 sm:py-2 font-medium leading-tight truncate"
+            x-text="t.label"
+          ></td>
+
+          <!-- Visual -->
+          <td class="px-2 py-1 sm:px-3 sm:py-2">
+            <div class="flex items-center gap-1 sm:gap-2">
+              <span class="inline-flex gap-1 sm:gap-1.5">
+                <template x-for="(_, idx) in arr(t.letters)" :key="idx">
+                  <span
+                    class="w-5 h-5 sm:w-6 sm:h-6 rounded-[4px] bg-white grid place-items-center
+                           font-bold leading-none"
+                    x-text="sampleLetter(idx)"
+                  ></span>
+                </template>
+              </span>
+              <template x-if="t.color">
+                <span
+                  class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-red-500"
+                  title="Color"
+                ></span>
               </template>
-            </tbody>
-          </table>
-        </div>
+            </div>
+          </td>
+
+          <!-- Prize -->
+          <td
+            class="px-2 py-1 sm:px-3 sm:py-2 text-right font-bold tabular-nums leading-tight"
+            x-text="formatP(t)"
+          ></td>
+        </tr>
+      </template>
+    </tbody>
+  </table>
+</div>
+
 
         <!-- Next Draw (fluid paddings/heights) -->
         <section class="mx-auto px-3 mt-6 lg:px-6">
@@ -444,29 +452,34 @@
       </div>
     </main>
 
-    <footer class="site mt-6 md:mt-10">
+    <!-- FOOTER -->
+    <footer class="max-w-screen-2xl mx-auto px-4 md:px-6 mt-6 md:mt-10">
       <div
         class="text-white bg-blue-400/65 rounded-lg p-3 sm:p-4 md:p-6 border-2 border-blue-600"
       >
         <div class="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           <!-- Left -->
           <div class="leading-snug">
-            <h4 class="font-bold text-[clamp(1rem,1.8vw,1.5rem)]">
+            <h4 class="font-bold text-base sm:text-lg md:text-2xl">
               Wilyonaryo™
             </h4>
-            <p class="text-[clamp(.75rem,1vw,1.05rem)] mt-2">
+            <p class="text-[7px] lg:text-lg mt-1 sm:mt-2">
               Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
               Clark Air Base, Philippines
             </p>
-            <h5 class="font-bold text-[clamp(.9rem,1.4vw,1.25rem)] mt-3">
+            <h5 class="font-bold text-xs sm:text-sm md:text-xl mt-2 sm:mt-3">
               Official License & Gaming Responsibility
             </h5>
-            <p class="text-[clamp(.75rem,1vw,1.05rem)] mt-2">
+            <p class="text-[7px] lg:text-lg mt-1 sm:mt-2">
               Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
               Clark Air Base, Philippines
             </p>
-            <img src="images/pagcor-logo.png" alt="" class="h-10 w-auto mt-2" />
-            <p class="text-[clamp(.7rem,.95vw,1rem)] mt-2">
+            <img
+              src="images/pagcor-logo.png"
+              alt=""
+              class="h-5 w-auto sm:h-6 md:h-10 mt-2 sm:mt-2 md:ml-2"
+            />
+            <p class="text-[7px] sm:text-[11px] md:text-[16px] mt-2 sm:mt-2">
               Gambling doesn't guarantee earnings or financial improvement. Stay
               within your limits. Need Help? Contact PAGCOR at (02) 8527-9831 or
               visit www.pagcor.ph/regulatory/responsible-gaming.php
@@ -474,86 +487,106 @@
           </div>
 
           <!-- Right -->
-          <div class="flex flex-col mx-2">
-            <h1 class="font-bold text-[clamp(.9rem,1.2vw,1.25rem)]">Web Map</h1>
-            <div class="flex gap-[clamp(1rem,8vw,8rem)]">
+          <div class="flex flex-col mx-4">
+            <h1 class="font-bold text-xs 2xl:text-xl">Web Map</h1>
+            <div class="flex lg:gap-32">
               <div class="flex flex-col">
                 <a
                   href=""
-                  class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline"
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
                   >Live Game</a
                 >
                 <a
                   href=""
-                  class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline"
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
                   >Home</a
                 >
                 <a
                   href=""
-                  class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline"
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
                   >Promotion</a
                 >
               </div>
               <div class="flex flex-col mx-2">
                 <a
                   href=""
-                  class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline"
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
                   >Support</a
                 >
                 <a
                   href=""
-                  class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline"
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
                   >FAQs</a
                 >
                 <a
                   href=""
-                  class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline"
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
                   >Terms and Conditions</a
                 >
               </div>
               <div class="flex flex-col">
                 <a
                   href=""
-                  class="mt-2 text-[clamp(.8rem,1vw,1rem)] hover:underline"
+                  class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
                   >Privacy Policy</a
                 >
               </div>
             </div>
 
             <div class="col-span-3 sm:col-span-3">
-              <h6 class="font-bold text-[clamp(.9rem,1.2vw,1.25rem)] mt-2">
+              <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-2">
                 Join our community
               </h6>
-              <div class="flex items-center gap-3 mt-2">
+              <div class="flex items-center gap-2 sm:gap-3 mt-1 sm:mt-2">
                 <a href=""
-                  ><img src="images/FbLogo.png" alt="" class="h-8 w-auto"
+                  ><img
+                    src="images/FbLogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
                 <a href=""
-                  ><img src="images/teleLogo2.png" alt="" class="h-8 w-auto"
+                  ><img
+                    src="images/teleLogo2.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
               </div>
 
-              <h6 class="font-bold text-[clamp(.9rem,1.2vw,1.25rem)] mt-4">
+              <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-3 sm:mt-4">
                 Follow Us
               </h6>
-              <div class="flex flex-wrap items-center gap-3 mt-2">
+              <div
+                class="flex flex-wrap items-center gap-1 sm:gap-3 mt-1 sm:mt-2"
+              >
                 <a href=""
-                  ><img src="images/FbLogo.png" alt="" class="h-8 w-auto"
+                  ><img
+                    src="images/FbLogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
                 <a href=""
-                  ><img src="images/xlogo.png" alt="" class="h-8 w-auto"
+                  ><img
+                    src="images/xlogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
                 <a href=""
-                  ><img src="images/tiktoklogo.png" alt="" class="h-8 w-auto"
+                  ><img
+                    src="images/tiktoklogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
                 <a href=""
                   ><img
                     src="images/instagramLogo.png"
                     alt=""
-                    class="h-8 w-auto"
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
                 <a href=""
-                  ><img src="images/youtubelogo.png" alt="" class="h-8 w-auto"
+                  ><img
+                    src="images/youtubelogo.png"
+                    alt=""
+                    class="h-4 sm:h-5 md:h-8 w-auto"
                 /></a>
               </div>
             </div>
@@ -561,6 +594,15 @@
         </div>
       </div>
     </footer>
+
+    <div class="flex justify-center items-center my-2 sm:mt-3">
+      <p
+        class="text-[10px] md:text-[12px] text-gray-800 text-center bg-orange-50/60 rounded px-2 py-0.5 sm:py-1"
+      >
+        ©2024-2025 WILYONARYO PLUS ALL RIGHT RESERVED
+      </p>
+    </div>
+
 
     <script>
       function prizeChart() {
