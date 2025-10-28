@@ -120,14 +120,14 @@
       </div>
 
       <!-- Right: CTAs (mobile unchanged; tighter only on md+) -->
-      <div class="flex items-center gap-1.5 lg:gap-4 text-[8px] lg:text-xl md:leading-none">
+      <div class="flex items-center gap-1.5 lg:gap-10 text-[8px] lg:text-xl md:leading-none">
         <a
           href="loginForm.html"
-          class="bg-gray-200 rounded-full px-2 py-0.5 lg:px-10 lg:py-2.5 font-semibold hover:bg-gray-300"
+          class="bg-gray-200 rounded-full px-2 py-0.5 lg:px-10 lg:py-3 font-semibold hover:bg-gray-300"
         >Login</a>
         <a
           href="register.php"
-          class="bg-orange-500 rounded-full px-2 py-0.5 lg:px-10 lg:py-2.5 font-semibold text-white hover:bg-orange-600"
+          class="bg-orange-500 rounded-full px-2 py-0.5 lg:px-10 lg:py-3 font-semibold text-white hover:bg-orange-600"
         >Register</a>
       </div>
     </nav>
@@ -137,7 +137,7 @@
 
     <!-- HERO -->
     <section
-      class="max-w-screen-2xl mx-auto px-4 md:px-6 mt-8 md:mt-14 lg:pt-20 lg:pb-32 lg:ml-16"
+      class="max-w-screen-2xl mx-auto px-4 md:px-6 mt-8 md:mt-14 lg:pt-20 lg:pb-32"
     >
       <div class="grid grid-cols-1 xl:grid-cols-2 gap-10 items-center">
         <!-- Left: Text -->
@@ -167,25 +167,37 @@
         </div>
 
         <!-- Right: layered block -->
-        <div class="relative w-full mx-auto max-w-4xl lg:-mt-20 lg:scale-90">
-          <div class="relative aspect-[16/10]">
-            <img
-              src="images/lightScreen.gif"
-              alt=""
-              class="absolute inset-0 w-[90%] translate-x-[5%] top-[5%] h-full object-contain drop-shadow-2xl"
-            />
-            <img
-              src="images/willie.png"
-              alt="picture of koya wel"
-              class="absolute left-1/2 -top-[15%] -translate-x-1/2 w-[82%] max-w-[560px] drop-shadow-2xl"
-            />
-            <img
-              src="images/frame.gif"
-              alt=""
-              class="absolute left-1/2 top-[76%] -translate-x-1/2 w-[78%] max-w-[980px] drop-shadow-2xl"
-            />
-          </div>
-        </div>
+<div
+  class="relative w-full mx-auto max-w-4xl
+         lg:-mt-20 lg:scale-90
+         min-[1366px]:-mt-20 min-[1366px]:scale-90        /* typical 13–15” laptop */
+         min-[1600px]:-mt-24 min-[1600px]:scale-95        /* wider laptop / small desktop */
+         min-[1920px]:-mt-2 min-[1920px]:scale-100"     
+>
+  <div class="relative aspect-[16/10]">
+    <img
+      src="images/lightScreen.gif" alt=""
+      class="absolute inset-0 h-full object-contain drop-shadow-2xl
+             w-[90%] translate-x-[5%] top-[5%]
+             min-[1600px]:w-[88%] min-[1600px]:translate-x-[6%] min-[1600px]:top-[4%]
+             min-[1920px]:w-[86%] min-[1920px]:translate-x-[7%] min-[1920px]:top-[3%]"
+    />
+    <img
+      src="images/willie.png" alt="picture of koya wel"
+      class="absolute left-1/2 -translate-x-1/2 drop-shadow-2xl
+             -top-[15%] w-[82%] max-w-[560px]
+             min-[1600px]:-top-[18%] min-[1600px]:w-[80%] min-[1600px]:max-w-[640px]
+             min-[1920px]:-top-[20%] min-[1920px]:w-[78%] min-[1920px]:max-w-[720px]"
+    />
+    <img
+      src="images/frame.gif" alt=""
+      class="absolute left-1/2 -translate-x-1/2 drop-shadow-2xl
+             top-[76%] w-[78%] max-w-[980px]
+             min-[1600px]:top-[74%] min-[1600px]:w-[76%] min-[1600px]:max-w-[1100px]
+             min-[1920px]:top-[72%] min-[1920px]:w-[74%] min-[1920px]:max-w-[1220px]"
+    />
+  </div>
+</div>
 
         <!-- Mobile intro text -->
         <div class="xl:hidden text-center px-2 my-20 mx-8">
