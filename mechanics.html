@@ -118,65 +118,42 @@
       class="fixed inset-0 bg-[url('images/backgroundPhoto1.png')] bg-cover bg-center bg-no-repeat opacity-25 -z-10"
     ></div>
 
-    <header
-      class="bg-gradient-to-b from-blue-700 via-blue-600 to-blue-600 shadow-lg rounded-b-[20px]"
-    >
-      <div class="max-w-screen-2xl mx-auto px-2.5 md:px-5">
-        <!-- Lock the bar height; allow overflow for a taller logo -->
-        <nav
-          class="relative flex items-center justify-between h-12 lg:h-20 overflow-visible"
-        >
-          <!-- Left: Logo (bigger, but won't grow the navbar) -->
-          <a href="#" class="shrink-0 -my-2 md:-my-3">
-            <img
-              src="images/logo.gif"
-              alt="Logo"
-              class="h-16 md:h-20 2xl:h-24 w-auto select-none pointer-events-none"
-            />
-          </a>
+     <header class="bg-gradient-to-b from-blue-700 via-blue-600 to-blue-600 shadow-lg rounded-b-[20px]">
+  <div class="max-w-screen-2xl mx-auto px-2.5 md:px-5">
+    <!-- Mobile unchanged; desktop gets fixed height + overflow -->
+    <nav class="flex items-center justify-between py-1 md:py-0 lg:h-20 md:overflow-visible">
+      <!-- Left: Logo (mobile unchanged; bigger only on md+) -->
+      <a href="#" class="shrink-0 md:-my-4">
+        <img
+          src="images/logo.gif"
+          alt="Logo"
+          class="h-7 w-auto md:h-20 2xl:h-24"
+        />
+      </a>
 
-          <!-- Center: Nav links (compact line height so the bar stays thin) -->
-          <div
-            class="flex items-center justify-center gap-4 lg:gap-20 text-[10px] md:text-sm lg:text-xl leading-none"
-          >
-            <a
-              href="homeResponsiveFix.html"
-              class="font-semibold text-white hover:text-orange-400"
-              >Home</a
-            >
-            <a
-              href="watch.html"
-              class="font-semibold text-white hover:text-orange-400"
-              >Watch</a
-            >
-            <a
-              href="mechanics.html"
-              class="font-semibold text-white hover:text-orange-400"
-              >How to play?</a
-            >
-            <a href="#" class="font-semibold text-white hover:text-orange-400"
-              >Contact Us</a
-            >
-          </div>
-
-          <!-- Right: CTAs (tight paddings so they don’t force height) -->
-          <div
-            class="flex items-center gap-2 lg:gap-20 text-[10px] md:text-sm lg:text-xl leading-none"
-          >
-            <a
-              href="loginForm.html"
-              class="bg-gray-200 rounded-full px-2 py-1 md:px-3 md:py-1.5 font-semibold hover:bg-gray-300"
-              >Login</a
-            >
-            <a
-              href="register.php"
-              class="bg-orange-500 rounded-full px-2 py-1 md:px-3 md:py-1.5 font-semibold text-white hover:bg-orange-600"
-              >Register</a
-            >
-          </div>
-        </nav>
+      <!-- Center: Nav links (mobile unchanged; compact line-height only on md+) -->
+      <div class="flex items-center justify-center gap-4 lg:gap-28 text-[8px] lg:text-xl md:leading-none">
+        <a href="homeResponsiveFix.html" class="font-semibold text-white hover:text-orange-400">Home</a>
+        <a href="watch.html" class="font-semibold text-white hover:text-orange-400">Watch</a>
+        <a href="mechanics.html" class="font-semibold text-white hover:text-orange-400">How to play?</a>
+        <a href="#" class="font-semibold text-white hover:text-orange-400">Contact Us</a>
       </div>
-    </header>
+
+      <!-- Right: CTAs (mobile unchanged; tighter only on md+) -->
+      <div class="flex items-center gap-1.5 lg:gap-4 text-[8px] lg:text-xl md:leading-none">
+        <a
+          href="loginForm.html"
+          class="bg-gray-200 rounded-full px-2 py-0.5 lg:px-10 lg:py-3 font-semibold hover:bg-gray-300"
+        >Login</a>
+        <a
+          href="register.php"
+          class="bg-orange-500 rounded-full px-2 py-0.5 lg:px-10 lg:py-3 font-semibold text-white hover:bg-orange-600"
+        >Register</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
 
     <main class="site">
       <div class="bg-blue-50/80 my-4 rounded-md py-3">

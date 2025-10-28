@@ -100,32 +100,41 @@
     </div>
 
     <!-- HEADER -->
-    <header class="bg-gradient-to-b from-blue-700 via-blue-600 to-blue-600 shadow-lg rounded-b-[20px]">
-        <div class="max-w-screen-2xl mx-auto px-2.5 md:px-5">
-            <nav class="flex items-center justify-between py-1 md:py-2">
-                <!-- Left: Logo -->
-                <a href="#" class="shrink-0">
-                    <img src="images/logo.gif" alt="Logo" class="h-7 w-auto md:h-12 2xl:h-24" />
-                </a>
+     <header class="bg-gradient-to-b from-blue-700 via-blue-600 to-blue-600 shadow-lg rounded-b-[20px]">
+  <div class="max-w-screen-2xl mx-auto px-2.5 md:px-5">
+    <!-- Mobile unchanged; desktop gets fixed height + overflow -->
+    <nav class="flex items-center justify-between py-1 md:py-0 lg:h-20 md:overflow-visible">
+      <!-- Left: Logo (mobile unchanged; bigger only on md+) -->
+      <a href="#" class="shrink-0 md:-my-4">
+        <img
+          src="images/logo.gif"
+          alt="Logo"
+          class="h-7 w-auto md:h-20 2xl:h-24"
+        />
+      </a>
 
-                <!-- Center: Nav links -->
-                <div class="flex items-center justify-center gap-4 lg:gap-28 text-[8px] lg:text-xl">
-                    <a href="homeResponsiveFix.html" class="font-semibold text-white hover:text-orange-400">Home</a>
-                    <a href="watch.html" class="font-semibold text-white hover:text-orange-400">Watch</a>
-                    <a href="mechanics.html" class="font-semibold text-white hover:text-orange-400">How to play?</a>
-                    <a href="#" class="font-semibold text-white hover:text-orange-400">Contact Us</a>
-                </div>
+      <!-- Center: Nav links (mobile unchanged; compact line-height only on md+) -->
+      <div class="flex items-center justify-center gap-4 lg:gap-28 text-[8px] lg:text-xl md:leading-none">
+        <a href="homeResponsiveFix.html" class="font-semibold text-white hover:text-orange-400">Home</a>
+        <a href="watch.html" class="font-semibold text-white hover:text-orange-400">Watch</a>
+        <a href="mechanics.html" class="font-semibold text-white hover:text-orange-400">How to play?</a>
+        <a href="#" class="font-semibold text-white hover:text-orange-400">Contact Us</a>
+      </div>
 
-                <!-- Right: CTAs -->
-                <div class="flex items-center gap-1.5 lg:gap-20 text-[8px] lg:text-xl">
-                    <a href="loginForm.html"
-                        class="bg-gray-200 rounded-full px-2 py-0.5 md:px-3 md:py-1.5 font-semibold hover:bg-gray-300">Login</a>
-                    <a href="register.php"
-                        class="bg-orange-500 rounded-full px-2 py-0.5 md:px-3 md:py-1.5 font-semibold text-white hover:bg-orange-600">Register</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+      <!-- Right: CTAs (mobile unchanged; tighter only on md+) -->
+      <div class="flex items-center gap-1.5 lg:gap-4 text-[8px] lg:text-xl md:leading-none">
+        <a
+          href="loginForm.html"
+          class="bg-gray-200 rounded-full px-2 py-0.5 lg:px-10 lg:py-3 font-semibold hover:bg-gray-300"
+        >Login</a>
+        <a
+          href="register.php"
+          class="bg-orange-500 rounded-full px-2 py-0.5 lg:px-10 lg:py-3 font-semibold text-white hover:bg-orange-600"
+        >Register</a>
+      </div>
+    </nav>
+  </div>
+</header>
 
     <!-- MAIN -->
     <main class="site flex-1">
