@@ -1,277 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="no-referrer" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self';
-  script-src 'self' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval';
-  style-src  'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com 'unsafe-inline';
-  font-src   'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://unpkg.com;
-  img-src 'self' data:;
-  connect-src 'self';
-  base-uri 'self';
-  form-action 'self'" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+    script-src 'self' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval';
+    style-src  'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com 'unsafe-inline';
+    font-src   'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://unpkg.com;
+    img-src 'self' data:;
+    connect-src 'self';
+    base-uri 'self';
+    form-action 'self'"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Watch Wilyonaryo</title>
 
     <link rel="icon" type="image/png" href="images/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Alpine -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind = tailwind || {};
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ["Poppins", "ui-sans-serif", "system-ui", "sans-serif"],
-                        luckiest: ['"Luckiest Guy"', "cursive"],
-                    },
-                },
+      tailwind = tailwind || {};
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Poppins", "ui-sans-serif", "system-ui", "sans-serif"],
+              luckiest: ['"Luckiest Guy"', "cursive"],
             },
-        };
+          },
+        },
+      };
     </script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <style>
-        [x-cloak] {
-            display: none !important;
-        }
+      [x-cloak] {
+        display: none !important;
+      }
+      /* safer AOS initial state */
+      [data-aos="zoom-out-up"] {
+        transform: translateY(6%) scale(0.9);
+        opacity: 0;
+      }
+      [data-aos="zoom-out-up"].aos-animate {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
 
-        /* safer AOS initial state */
-        [data-aos="zoom-out-up"] {
-            transform: translateY(6%) scale(.9);
-            opacity: 0;
-        }
+      html {
+        scroll-behavior: smooth;
+        overflow-x: clip;
+      }
+      :root {
+        --fs-root: clamp(14px, 0.85vw + 8px, 16px);
+      }
+      html {
+        font-size: var(--fs-root);
+      }
 
-        [data-aos="zoom-out-up"].aos-animate {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-        }
+      /* Reusable site container */
+      .site {
+        max-width: 2000px;
+        margin-inline: auto;
+        padding-inline: clamp(12px, 2.5vw, 24px);
+      }
 
-        html {
-            scroll-behavior: smooth;
-            overflow-x: clip;
-        }
-
-        :root {
-            --fs-root: clamp(14px, 0.85vw + 8px, 16px);
-        }
-
-        html {
-            font-size: var(--fs-root);
-        }
-
-        /* Reusable site container */
-        .site {
-            max-width: 2000px;
-            /* keep your setting */
-            margin-inline: auto;
-            padding-inline: clamp(12px, 2.5vw, 24px);
-        }
-
-        /* Media safety */
-        img,
-        svg,
-        video {
-            max-width: 100%;
-            height: auto;
-        }
+      img,
+      svg,
+      video {
+        max-width: 100%;
+        height: auto;
+      }
     </style>
-</head>
+  </head>
 
-<body
-    class="min-h-screen flex flex-col relative bg-gradient-to-b from-orange-300 via-orange-200 to-orange-100 font-sans"
-    x-data="prizeChart()" x-cloak>
+  <body
+    class="min-h-dvh flex flex-col relative bg-gradient-to-b from-orange-300 via-orange-200 to-orange-100 font-sans"
+    x-data="prizeChart()"
+    x-cloak
+  >
     <!-- Full-viewport background -->
-    <div class="fixed inset-0 bg-[url('images/backgroundPhoto1.png')] bg-cover bg-center bg-no-repeat opacity-25 -z-10">
-    </div>
+    <div
+      class="fixed inset-0 bg-[url('images/backgroundPhoto1.png')] bg-cover bg-center bg-no-repeat opacity-25 -z-10"
+    ></div>
 
     <!-- HEADER -->
-     <header class="bg-gradient-to-b from-blue-700 via-blue-600 to-blue-600 shadow-lg rounded-b-[20px]">
-  <div class="max-w-screen-2xl mx-auto px-2.5 md:px-5">
-    <!-- Mobile unchanged; desktop gets fixed height + overflow -->
-    <nav class="flex items-center justify-between py-1 md:py-0 lg:h-20 md:overflow-visible">
-      <!-- Left: Logo (mobile unchanged; bigger only on md+) -->
-      <a href="#" class="shrink-0 md:-my-4">
-        <img
-          src="images/logo.gif"
-          alt="Logo"
-          class="h-7 w-auto md:h-20 2xl:h-24"
-        />
-      </a>
+    <header
+      class="bg-gradient-to-b from-blue-700 via-blue-600 to-blue-600 shadow-lg rounded-b-[20px]"
+    >
+      <div class="max-w-screen-2xl mx-auto px-2.5 md:px-5">
+        <nav
+          class="flex items-center justify-between py-1 md:py-0 lg:h-20 md:overflow-visible"
+        >
+          <a href="#" class="shrink-0 md:-my-4">
+            <img
+              src="images/logo.gif"
+              alt="Logo"
+              class="h-7 w-auto md:h-20 2xl:h-24"
+            />
+          </a>
 
-      <!-- Center: Nav links (mobile unchanged; compact line-height only on md+) -->
-      <div class="flex items-center justify-center gap-4 lg:gap-28 text-[8px] lg:text-xl md:leading-none">
-        <a href="homeResponsiveFix.html"
-     class="group relative font-semibold text-white px-1">
-    Home
-    <span class="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-[3px]
-                 block h-0.5 w-0 bg-orange-400 rounded-full
-                 transition-all duration-300 ease-out
-                 group-hover:w-8"></span>
-  </a>
+          <div
+            class="flex items-center justify-center gap-4 lg:gap-28 text-[8px] lg:text-xl md:leading-none"
+          >
+            <a
+              href="homeResponsiveFix.html"
+              class="group relative font-semibold text-white px-1"
+            >
+              Home
+              <span
+                class="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-[3px] block h-0.5 w-0 bg-orange-400 rounded-full transition-all duration-300 ease-out group-hover:w-8"
+              ></span>
+            </a>
+            <a
+              href="watch.html"
+              class="group relative font-semibold text-white px-1"
+            >
+              Watch
+              <span
+                class="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-[3px] block h-0.5 w-0 bg-orange-400 rounded-full transition-all duration-300 ease-out group-hover:w-10"
+              ></span>
+            </a>
+            <a
+              href="mechanics.html"
+              class="group relative font-semibold text-white px-1"
+            >
+              How to play?
+              <span
+                class="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-[3px] block h-0.5 w-0 bg-orange-400 rounded-full transition-all duration-300 ease-out group-hover:w-16"
+              ></span>
+            </a>
+            <a href="contact.html" class="group relative font-semibold text-white px-1">
+              Contact Us
+              <span
+                class="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-[3px] block h-0.5 w-0 bg-orange-400 rounded-full transition-all duration-300 ease-out group-hover:w-16"
+              ></span>
+            </a>
+          </div>
 
-  <a href="watch.html"
-     class="group relative font-semibold text-white px-1">
-    Watch
-    <span class="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-[3px]
-                 block h-0.5 w-0 bg-orange-400 rounded-full
-                 transition-all duration-300 ease-out
-                 group-hover:w-10"></span>
-  </a>
-
-  <a href="mechanics.html"
-     class="group relative font-semibold text-white px-1">
-    How to play?
-    <span class="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-[3px]
-                 block h-0.5 w-0 bg-orange-400 rounded-full
-                 transition-all duration-300 ease-out
-                 group-hover:w-16"></span>
-  </a>
-
-  <a href="#"
-     class="group relative font-semibold text-white px-1">
-    Contact Us
-    <span class="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-[3px]
-                 block h-0.5 w-0 bg-orange-400 rounded-full
-                 transition-all duration-300 ease-out
-                 group-hover:w-16"></span>
-  </a>
+          <div
+            class="flex items-center gap-1.5 lg:gap-4 text-[8px] lg:text-xl md:leading-none"
+          >
+            <a
+              href="loginForm.html"
+              class="bg-gray-200 rounded-full px-2 py-0.5 lg:px-10 lg:py-3 font-semibold hover:bg-gray-300"
+              >Login</a
+            >
+            <a
+              href="register.php"
+              class="bg-orange-500 rounded-full px-2 py-0.5 lg:px-10 lg:py-3 font-semibold text-white hover:bg-orange-600"
+              >Register</a
+            >
+          </div>
+        </nav>
       </div>
-
-      <!-- Right: CTAs (mobile unchanged; tighter only on md+) -->
-      <div class="flex items-center gap-1.5 lg:gap-4 text-[8px] lg:text-xl md:leading-none">
-        <a
-          href="loginForm.html"
-          class="bg-gray-200 rounded-full px-2 py-0.5 lg:px-10 lg:py-3 font-semibold hover:bg-gray-300"
-        >Login</a>
-        <a
-          href="register.php"
-          class="bg-orange-500 rounded-full px-2 py-0.5 lg:px-10 lg:py-3 font-semibold text-white hover:bg-orange-600"
-        >Register</a>
-      </div>
-    </nav>
-  </div>
-</header>
+    </header>
 
     <!-- MAIN -->
     <main class="site flex-1">
-        <div class="relative overflow-hidden bg-blue-50/80 my-4 rounded-md py-6 w-full lg:w-[90%] mx-auto p-3 lg:p-5">
-            <h1 class="font-bold text-xl my-2 lg:text-3xl lg:my-4 text-center">Watch Wilyonaryo Now!</h1>
+      <div
+        class="relative overflow-hidden bg-blue-50/80 my-4 rounded-md py-6 w-full lg:w-[90%] mx-auto p-3 lg:p-5"
+      >
+        <h1 class="font-bold text-xl my-2 lg:text-3xl lg:my-4 text-center">
+          Watch Wilyonaryo Now!
+        </h1>
 
-            <p class="font-medium text-xs lg:text-xl lg:my-4">
-                Powerball® drawings are broadcast live every Monday, Wednesday,
-                and Saturday at 10:59 pm ET from the Florida Lottery draw studio in Tallahassee.
-                <br><br>
-                Powerball and Double Play® drawings are also live streamed right here on the Powerball website.
-                <br><br>
-                Check out our YouTube channel for more draw show clips.
-            </p>
+        <p class="font-medium text-xs lg:text-xl lg:my-4">
+          Powerball® drawings are broadcast live every Monday, Wednesday, and
+          Saturday at 10:59 pm ET from the Florida Lottery draw studio in
+          Tallahassee.
+          <br /><br />
+          Powerball and Double Play® drawings are also live streamed right here
+          on the Powerball website.
+          <br /><br />
+          Check out our YouTube channel for more draw show clips.
+        </p>
 
-            <a href="#" class="flex w-fit mx-auto items-center justify-center
-               text-white bg-blue-600 px-4 py-2 lg:px-6 lg:py-3
-               rounded-full text-center my-2 lg:text-xl lg:my-4">
-                View our Youtube channel
-            </a>
+        <a
+          href="#"
+          class="flex w-fit mx-auto items-center justify-center text-white bg-blue-600 px-4 py-2 lg:px-6 lg:py-3 rounded-full text-center my-2 lg:text-xl lg:my-4"
+        >
+          View our Youtube channel
+        </a>
 
-            <div class="flex justify-center mt-4">
-                <img src="images/WilyoPoster.png" alt="Wilyonaryo poster"
-                    class="h-auto w-[200px] sm:w-[520px] lg:w-[820px] max-w-none" />
-            </div>
+        <div class="flex justify-center mt-4">
+          <img
+            src="images/WilyoPoster.png"
+            alt="Wilyonaryo poster"
+            class="h-auto w-[200px] sm:w-[520px] lg:w-[820px] max-w-none"
+          />
         </div>
+      </div>
+
+      <!-- FOOTER WRAPPER with mt-auto so it stays at the bottom together -->
+    <div class="mt-auto">
+      <footer class="max-w-screen-2xl mx-auto px-4 md:px-6 mt-6 md:mt-10">
+        <div
+          class="text-white bg-blue-400/65 rounded-lg p-3 sm:p-4 md:p-6 border-2 border-blue-600"
+        >
+          <div class="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+            <!-- Left -->
+            <div class="leading-snug">
+              <h4 class="font-bold text-base sm:text-lg md:text-2xl">
+                Wilyonaryo™
+              </h4>
+              <p class="text-[7px] lg:text-lg mt-1 sm:mt-2">
+                Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
+                Clark Air Base, Philippines
+              </p>
+              <h5 class="font-bold text-xs sm:text-sm md:text-xl mt-2 sm:mt-3">
+                Official License & Gaming Responsibility
+              </h5>
+              <p class="text-[7px] lg:text-lg mt-1 sm:mt-2">
+                Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
+                Clark Air Base, Philippines
+              </p>
+              <img
+                src="images/pagcor-logo.png"
+                alt=""
+                class="h-5 w-auto sm:h-6 md:h-10 mt-2 sm:mt-2 md:ml-2"
+              />
+              <p class="text-[7px] sm:text-[11px] md:text-[16px] mt-2 sm:mt-2">
+                Gambling doesn't guarantee earnings or financial improvement.
+                Stay within your limits. Need Help? Contact PAGCOR at (02)
+                8527-9831 or visit
+                www.pagcor.ph/regulatory/responsible-gaming.php
+              </p>
+            </div>
+
+            <!-- Right -->
+            <div class="flex flex-col mx-4">
+              <h1 class="font-bold text-xs 2xl:text-xl">Web Map</h1>
+              <div class="flex lg:gap-32">
+                <div class="flex flex-col">
+                  <a
+                    href=""
+                    class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                    >Live Game</a
+                  >
+                  <a
+                    href=""
+                    class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                    >Home</a
+                  >
+                  <a
+                    href=""
+                    class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                    >Promotion</a
+                  >
+                </div>
+                <div class="flex flex-col mx-2">
+                  <a
+                    href=""
+                    class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                    >Support</a
+                  >
+                  <a
+                    href=""
+                    class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                    >FAQs</a
+                  >
+                  <a
+                    href=""
+                    class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                    >Terms and Conditions</a
+                  >
+                </div>
+                <div class="flex flex-col">
+                  <a
+                    href=""
+                    class="text-[8px] mt-2 2xl:text-[16px] hover:underline"
+                    >Privacy Policy</a
+                  >
+                </div>
+              </div>
+
+              <div class="col-span-3 sm:col-span-3">
+                <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-2">
+                  Join our community
+                </h6>
+                <div class="flex items-center gap-2 sm:gap-3 mt-1 sm:mt-2">
+                  <a href=""
+                    ><img
+                      src="images/FbLogo.png"
+                      alt=""
+                      class="h-4 sm:h-5 md:h-8 w-auto"
+                  /></a>
+                  <a href=""
+                    ><img
+                      src="images/teleLogo2.png"
+                      alt=""
+                      class="h-4 sm:h-5 md:h-8 w-auto"
+                  /></a>
+                </div>
+
+                <h6
+                  class="font-bold text-xs sm:text-sm md:text-xl mt-3 sm:mt-4"
+                >
+                  Follow Us
+                </h6>
+                <div
+                  class="flex flex-wrap items-center gap-1 sm:gap-3 mt-1 sm:mt-2"
+                >
+                  <a href=""
+                    ><img
+                      src="images/FbLogo.png"
+                      alt=""
+                      class="h-4 sm:h-5 md:h-8 w-auto"
+                  /></a>
+                  <a href=""
+                    ><img
+                      src="images/xlogo.png"
+                      alt=""
+                      class="h-4 sm:h-5 md:h-8 w-auto"
+                  /></a>
+                  <a href=""
+                    ><img
+                      src="images/tiktoklogo.png"
+                      alt=""
+                      class="h-4 sm:h-5 md:h-8 w-auto"
+                  /></a>
+                  <a href=""
+                    ><img
+                      src="images/instagramLogo.png"
+                      alt=""
+                      class="h-4 sm:h-5 md:h-8 w-auto"
+                  /></a>
+                  <a href=""
+                    ><img
+                      src="images/youtubelogo.png"
+                      alt=""
+                      class="h-4 sm:h-5 md:h-8 w-auto"
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          
+        </div>
+      </footer>
+
+      <div class="flex justify-center items-center mt-2">
+            <p
+              class="text-[10px] md:text-[12px] text-gray-800 text-center bg-orange-50/60 rounded px-2 py-0.5 sm:py-1"
+            >
+              ©2024-2025 WILYONARYO PLUS ALL RIGHT RESERVED
+            </p>
+          </div>
+    </div>
     </main>
 
-    <!-- FOOTER (pinned to bottom) -->
-    <footer class="mt-auto max-w-screen-2xl mx-auto px-4 md:px-6 mt-6 md:mt-10">
-        <div class="text-white bg-blue-400/65 rounded-lg p-3 sm:p-4 md:p-6 border-2 border-blue-600">
-            <div class="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-                <!-- Left -->
-                <div class="leading-snug">
-                    <h4 class="font-bold text-base sm:text-lg md:text-2xl">Wilyonaryo™</h4>
-                    <p class="text-[7px] lg:text-lg mt-1 sm:mt-2">
-                        Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
-                        Clark Air Base, Philippines
-                    </p>
-                    <h5 class="font-bold text-xs sm:text-sm md:text-xl mt-2 sm:mt-3">
-                        Official License & Gaming Responsibility
-                    </h5>
-                    <p class="text-[7px] lg:text-lg mt-1 sm:mt-2">
-                        Wilyonaryo seats in the heart of Clark Freeport Zone, formerly
-                        Clark Air Base, Philippines
-                    </p>
-                    <img src="images/pagcor-logo.png" alt="" class="h-5 w-auto sm:h-6 md:h-10 mt-2 sm:mt-2 md:ml-2" />
-                    <p class="text-[7px] sm:text-[11px] md:text-[16px] mt-2 sm:mt-2">
-                        Gambling doesn't guarantee earnings or financial improvement. Stay
-                        within your limits. Need Help? Contact PAGCOR at (02) 8527-9831 or
-                        visit www.pagcor.ph/regulatory/responsible-gaming.php
-                    </p>
-                </div>
-
-                <!-- Right -->
-                <div class="flex flex-col mx-4">
-                    <h1 class="font-bold text-xs 2xl:text-xl">Web Map</h1>
-                    <div class="flex lg:gap-32">
-                        <div class="flex flex-col">
-                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Live Game</a>
-                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Home</a>
-                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Promotion</a>
-                        </div>
-                        <div class="flex flex-col mx-2">
-                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Support</a>
-                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">FAQs</a>
-                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Terms and Conditions</a>
-                        </div>
-                        <div class="flex flex-col">
-                            <a href="" class="text-[8px] mt-2 2xl:text-[16px] hover:underline">Privacy Policy</a>
-                        </div>
-                    </div>
-
-                    <div class="col-span-3 sm:col-span-3">
-                        <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-2">Join our community</h6>
-                        <div class="flex items-center gap-2 sm:gap-3 mt-1 sm:mt-2">
-                            <a href=""><img src="images/FbLogo.png" alt="" class="h-4 sm:h-5 md:h-8 w-auto" /></a>
-                            <a href=""><img src="images/teleLogo2.png" alt="" class="h-4 sm:h-5 md:h-8 w-auto" /></a>
-                        </div>
-
-                        <h6 class="font-bold text-xs sm:text-sm md:text-xl mt-3 sm:mt-4">Follow Us</h6>
-                        <div class="flex flex-wrap items-center gap-1 sm:gap-3 mt-1 sm:mt-2">
-                            <a href=""><img src="images/FbLogo.png" alt="" class="h-4 sm:h-5 md:h-8 w-auto" /></a>
-                            <a href=""><img src="images/xlogo.png" alt="" class="h-4 sm:h-5 md:h-8 w-auto" /></a>
-                            <a href=""><img src="images/tiktoklogo.png" alt="" class="h-4 sm:h-5 md:h-8 w-auto" /></a>
-                            <a href=""><img src="images/instagramLogo.png" alt=""
-                                    class="h-4 sm:h-5 md:h-8 w-auto" /></a>
-                            <a href=""><img src="images/youtubelogo.png" alt="" class="h-4 sm:h-5 md:h-8 w-auto" /></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </footer>
-    <div class="flex justify-center items-center my-2 sm:mt-3">
-      <p
-        class="text-[10px] md:text-[12px] text-gray-800 text-center bg-orange-50/60 rounded px-2 py-0.5 sm:py-1"
-      >
-        ©2024-2025 WILYONARYO PLUS ALL RIGHT RESERVED
-      </p>
-    </div>
+    
 
     <script>
-        function prizeChart() {
-            return { /* stub to keep Alpine happy if referenced elsewhere */ };
-        }
+      function prizeChart() {
+        return {};
+      }
     </script>
-</body>
-
+  </body>
 </html>
