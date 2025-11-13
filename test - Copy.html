@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jackpot Display Slots</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Alpine -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            jackpot: ['Poppins', 'ui-sans-serif', 'system-ui'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% -10%, rgba(148, 163, 184, 0.12), transparent 60%),
+        radial-gradient(circle at 90% 110%, rgba(15, 23, 42, 0.4), transparent 60%),
+        radial-gradient(circle at center, #020617 0, #020617 45%, #020617 100%);
+    }
+
+    .jp-vignette::before {
+      content: "";
+      position: fixed;
+      inset: -40px;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 0, transparent 45%, rgba(0, 0, 0, 0.6) 100%);
+      mix-blend-mode: multiply;
+      z-index: -1;
+    }
+
+    .jp-title {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-weight: 900;
+      font-size: clamp(0.95rem, 2.2vw, 1.4rem);
+      background: linear-gradient(180deg, #fefce8 0%, #facc15 40%, #ea580c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      white-space: nowrap;
+      text-shadow:
+        0 1px 0 #fef9c3,
+        0 2px 0 #b45309,
+        0 3px 6px rgba(0,0,0,0.45);
+    }
+
+    .jp-title-pill {
+      border-radius: 999px;
+      padding: 0.45rem 2.4rem 0.55rem;
+      background: #e11d2f;
+      box-shadow:
+        0 3px 0 #b91c1c,
+        0 6px 12px rgba(0,0,0,0.6);
+      border: 2px solid rgba(250, 204, 21, 0.85);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center jp-vignette font-jackpot text-slate-50">
+  <div
+    class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(15,23,42,0.6),transparent_60%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.7),transparent_55%)]">
+  </div>
+
+  <div
+    x-data="{
+      amount: '$1000000', // no commas
+      tick: 0,
+      totalBulbs: 30,     // 12 top + 3 right + 12 bottom + 3 left
+      start() {
+        setInterval(() => {
+          this.tick = (this.tick + 1) % this.totalBulbs;
+        }, 140);
+      },
+      chars() {
+        return this.amount.split('');
+      }
+    }"
+    x-init="start()"
+    class="relative inline-flex items-center justify-center"
+  >
+    <!-- CAPSULE -->
+    <div
+      class="relative inline-flex items-center justify-center rounded-full border-[7px] border-amber-300
+                 bg-[#e11d2f]
+                 shadow-md
+                 px-12 py-6 sm:px-24 sm:py-10
+                 overflow-visible"
+    >
+      <!-- Bulbs – top row (indices 0–11) -->
+      <div class="pointer-events-none absolute inset-x-12 top-4 flex justify-between">
+        <template x-for="n in 12" :key="'top-'+n">
+          <span
+            class="h-3.5 w-3.5 md:h-4 md:w-4 rounded-full bg-amber-100 transition duration-150 ease-out"
+            :class="(tick === (n - 1))
+              ? 'opacity-100 scale-110'
+              : 'opacity-40 scale-90'">
+          </span>
+        </template>
+      </div>
+
+      <!-- Bulbs – right side (indices 12–14) -->
+      <div class="pointer-events-none absolute top-8 bottom-8 right-4 flex flex-col items-center justify-between">
+        <template x-for="n in 3" :key="'right-'+n">
+          <span
+            class="h-3.5 w-3.5 md:h-4 md:w-4 rounded-full bg-amber-100 transition duration-150 ease-out"
+            :class="[
+              (tick === (11 + n))
+                ? 'opacity-100 scale-110'
+                : 'opacity-40 scale-90',
+              n === 2 ? 'translate-x-[4px]' : ''
+            ]">
+          </span>
+        </template>
+      </div>
+
+      <!-- Bulbs – bottom row (indices 15–26) -->
+      <div class="pointer-events-none absolute inset-x-12 bottom-4 flex justify-between">
+        <template x-for="n in 12" :key="'bottom-'+n">
+          <span
+            class="h-3.5 w-3.5 md:h-4 md:w-4 rounded-full bg-amber-100 transition duration-150 ease-out"
+            :class="(tick === (14 + n))
+              ? 'opacity-100 scale-110'
+              : 'opacity-40 scale-90'">
+          </span>
+        </template>
+      </div>
+
+      <!-- Bulbs – left side (indices 27–29) -->
+      <div class="pointer-events-none absolute top-8 bottom-8 left-4 flex flex-col items-center justify-between">
+        <template x-for="n in 3" :key="'left-'+n">
+          <span
+            class="h-3.5 w-3.5 md:h-4 md:w-4 rounded-full bg-amber-100 transition duration-150 ease-out"
+            :class="[
+              (tick === (26 + n))
+                ? 'opacity-100 scale-110'
+                : 'opacity-40 scale-90',
+              n === 2 ? '-translate-x-[4px]' : ''
+            ]">
+          </span>
+        </template>
+      </div>
+
+      <!-- Inner dark red track -->
+      <div
+        class="absolute inset-y-9 left-[88px] right-[88px] rounded-full
+               bg-gradient-to-r from-[#7f1d1d] via-[#8b1a1a] to-[#7f1d1d]
+               border border-red-900/70">
+      </div>
+
+      <!-- JACKPOT PRIZE label (image) -->
+      <div class="absolute -translate-y-36 left-1/2 -translate-x-1/2">
+        <img
+          src="images/JackpotVisual3.png"
+          alt="Jackpot"
+          class="block h-auto max-w-none"
+          style="width: min(90vw, 550px);"
+        />
+      </div>
+
+      <!-- DIGIT TILES (bigger) -->
+      <div class="relative z-10 flex items-center justify-center gap-2 px-10 py-2">
+        <template x-for="(ch, idx) in chars()" :key="idx">
+          <div
+            class="relative h-16 w-12 md:h-20 md:w-14 flex items-center justify-center
+                   rounded-[14px]
+                   bg-[#fef3c7]
+                   shadow-sm
+                   border border-amber-200
+                   overflow-hidden">
+            <span
+              class="text-3xl md:text-[2.2rem] font-black
+                     text-yellow-700
+                     tracking-[0.12em]"
+              x-text="ch">
+            </span>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
