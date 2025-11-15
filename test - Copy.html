@@ -90,6 +90,16 @@
       },
       chars() {
         return this.amount.split('');
+      },
+      // 🔥 NEW: scale digits depending on how many characters there are
+      get digitScale() {
+        const len = this.amount.length;   // '$1000000' → 9 chars
+        const baseChars = 9;              // up to this length = full size
+        if (len <= baseChars) return 1;   // 10M fits at full size
+
+        // For 100M ($100000000 → 10 chars) scale slightly down
+        const scale = baseChars / len;    // e.g. 9 / 10 = 0.9
+        return Math.max(0.7, scale);      // don't go smaller than 70%
       }
     }"
     x-init="start()"
@@ -174,8 +184,11 @@
         />
       </div>
 
-      <!-- DIGIT TILES (bigger) -->
-      <div class="relative z-10 flex items-center justify-center gap-2 px-10 py-2">
+      <!-- DIGIT TILES (auto-scaled by digit count) -->
+      <div
+        class="relative z-10 flex items-center justify-center gap-2 px-10 py-2"
+        :style="{ transform: 'scale(' + digitScale + ')' }"
+      >
         <template x-for="(ch, idx) in chars()" :key="idx">
           <div
             class="relative h-16 w-12 md:h-20 md:w-14 flex items-center justify-center
