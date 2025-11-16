@@ -1061,13 +1061,13 @@
 >
   <div
     x-data="{
-      amount: '₱10000000',
+      amount: '₱1000000',
       tick: 0,
       totalBulbs: 30,
       start() {
         setInterval(() => {
           this.tick = (this.tick + 1) % this.totalBulbs;
-        }, 70);
+        }, 140);
       },
       chars() {
         return this.amount.split('');
@@ -1092,35 +1092,23 @@
     >
       <!-- bulbs top -->
       <div
-        class="pointer-events-none absolute inset-x-10 top-3 flex justify-evenly"
+        class="pointer-events-none absolute inset-x-10 top-3 flex justify-between"
       >
-        <template x-for="n in 8" :key="'top-'+n">
+        <template x-for="n in 12" :key="'top-'+n">
           <span
-            class="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-amber-100 transition duration-150"
+            class="h-3 w-3 sm:h-4 sm:w-4 rounded-full bg-amber-100 transition duration-150"
             :class="(tick === (n - 1)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
           ></span>
         </template>
       </div>
 
-      <!-- bulbs left (inward a bit) -->
+      <!-- bulbs right -->
       <div
-        class="pointer-events-none absolute top-7 bottom-7 left-8 flex flex-col-reverse justify-evenly"
+        class="pointer-events-none absolute top-7 bottom-7 right-3 flex flex-col justify-between"
       >
-        <template x-for="n in 2" :key="'left-'+n">
+        <template x-for="n in 3" :key="'right-'+n">
           <span
-            class="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-amber-100 transition duration-150"
-            :class="(tick === (22 + n)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
-          ></span>
-        </template>
-      </div>
-
-      <!-- bulbs right (inward a bit) -->
-      <div
-        class="pointer-events-none absolute top-7 bottom-7 right-8 flex flex-col justify-evenly"
-      >
-        <template x-for="n in 2" :key="'right-'+n">
-          <span
-            class="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-amber-100 transition duration-150"
+            class="h-3 w-3 sm:h-4 sm:w-4 rounded-full bg-amber-100 transition duration-150"
             :class="(tick === (11 + n)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
           ></span>
         </template>
@@ -1128,12 +1116,24 @@
 
       <!-- bulbs bottom -->
       <div
-        class="pointer-events-none absolute inset-x-10 bottom-3 flex flex-row-reverse justify-evenly"
+        class="pointer-events-none absolute inset-x-10 bottom-3 flex justify-between"
       >
-        <template x-for="n in 8" :key="'bottom-'+n">
+        <template x-for="n in 12" :key="'bottom-'+n">
           <span
-            class="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-amber-100 transition duration-150"
+            class="h-3 w-3 sm:h-4 sm:w-4 rounded-full bg-amber-100 transition duration-150"
             :class="(tick === (14 + n)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
+          ></span>
+        </template>
+      </div>
+
+      <!-- bulbs left -->
+      <div
+        class="pointer-events-none absolute top-7 bottom-7 left-3 flex flex-col justify-between"
+      >
+        <template x-for="n in 3" :key="'left-'+n">
+          <span
+            class="h-3 w-3 sm:h-4 sm:w-4 rounded-full bg-amber-100 transition duration-150"
+            :class="(tick === (26 + n)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
           ></span>
         </template>
       </div>
@@ -1171,8 +1171,6 @@
     </div>
   </div>
 </div>
-
-
 
                   <header class="mb-2">
                     <h3
