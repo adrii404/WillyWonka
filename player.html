@@ -1031,7 +1031,7 @@
                 <div class="overflow-hidden rounded-lg">
                   <iframe
                     width="100%"
-                    height="100%"
+                    height="95%"
                     src="WiyonaryoVideo.mp4"
                     title="2023 New Honda Super Cub 125 | Super Cub 125 |#shorts"
                     frameborder="0"
@@ -1049,18 +1049,18 @@
               data-upcoming-draw-open="false"
               data-cutoff-time="05:00 pm"
               data-can-bet="true"
+              class="-translate-y-24"
             >
               <div class="ticket-form-class">
                 <div
                   class="mx-auto max-w-md px-3 py-2 text-center sm:px-8 mt-4"
                 >
-
-               <!--JACKPOT DISPLAY-->
-<div
-  class="w-full flex justify-center translate-y-2 lg:translate-y-8 my-2 scale-[0.60] md:scale-50"
->
-  <div
-    x-data="{
+                  <!--JACKPOT DISPLAY-->
+                  <div
+                    class="w-full flex justify-center translate-y-2 lg:translate-y-4 my-2 scale-[0.60] md:scale-50"
+                  >
+                    <div
+                      x-data="{
       amount: '₱10000000',
       tick: 0,
       totalBulbs: 30,
@@ -1084,95 +1084,95 @@
         return 0.7;
       }
     }"
-    x-init="start()"
-    class="relative inline-flex items-center justify-center font-[Poppins,system-ui,sans-serif]"
-  >
-    <div
-      class="relative inline-flex items-center justify-center rounded-full border-[7px] border-amber-300 bg-[#e11d2f] shadow-md px-8 sm:px-12 h-[190px] sm:h-[180px] lg:h-[250px]"
-    >
-      <!-- bulbs top -->
-      <div
-        class="pointer-events-none absolute inset-x-10 top-3 flex justify-evenly"
-      >
-        <template x-for="n in 8" :key="'top-'+n">
-          <span
-            class="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-amber-100 transition duration-150"
-            :class="(tick === (n - 1)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
-          ></span>
-        </template>
-      </div>
+                      x-init="start()"
+                      class="relative inline-flex items-center justify-center font-[Poppins,system-ui,sans-serif]"
+                    >
+                      <div
+                        class="relative inline-flex items-center justify-center rounded-full border-[7px] border-amber-300 bg-[#e11d2f] shadow-md px-8 sm:px-12 h-[190px] sm:h-[180px] lg:h-[250px]"
+                      >
+                        <!-- bulbs top -->
+                        <div
+                          class="pointer-events-none absolute inset-x-10 top-3 flex justify-evenly"
+                        >
+                          <template x-for="n in 8" :key="'top-'+n">
+                            <span
+                              class="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-amber-100 transition duration-150"
+                              :class="(tick === (n - 1)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
+                            ></span>
+                          </template>
+                        </div>
 
-      <!-- bulbs left (inward a bit) -->
-      <div
-        class="pointer-events-none absolute top-7 bottom-7 left-8 flex flex-col-reverse justify-evenly"
-      >
-        <template x-for="n in 2" :key="'left-'+n">
-          <span
-            class="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-amber-100 transition duration-150"
-            :class="(tick === (22 + n)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
-          ></span>
-        </template>
-      </div>
+                        <!-- bulbs left (inward a bit) -->
+                        <div
+                          class="pointer-events-none absolute top-7 bottom-7 left-8 flex flex-col-reverse justify-evenly"
+                        >
+                          <template x-for="n in 2" :key="'left-'+n">
+                            <span
+                              class="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-amber-100 transition duration-150"
+                              :class="(tick === (22 + n)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
+                            ></span>
+                          </template>
+                        </div>
 
-      <!-- bulbs right (inward a bit) -->
-      <div
-        class="pointer-events-none absolute top-7 bottom-7 right-8 flex flex-col justify-evenly"
-      >
-        <template x-for="n in 2" :key="'right-'+n">
-          <span
-            class="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-amber-100 transition duration-150"
-            :class="(tick === (11 + n)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
-          ></span>
-        </template>
-      </div>
+                        <!-- bulbs right (inward a bit) -->
+                        <div
+                          class="pointer-events-none absolute top-7 bottom-7 right-8 flex flex-col justify-evenly"
+                        >
+                          <template x-for="n in 2" :key="'right-'+n">
+                            <span
+                              class="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-amber-100 transition duration-150"
+                              :class="(tick === (11 + n)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
+                            ></span>
+                          </template>
+                        </div>
 
-      <!-- bulbs bottom -->
-      <div
-        class="pointer-events-none absolute inset-x-10 bottom-3 flex flex-row-reverse justify-evenly"
-      >
-        <template x-for="n in 8" :key="'bottom-'+n">
-          <span
-            class="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-amber-100 transition duration-150"
-            :class="(tick === (14 + n)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
-          ></span>
-        </template>
-      </div>
+                        <!-- bulbs bottom -->
+                        <div
+                          class="pointer-events-none absolute inset-x-10 bottom-3 flex flex-row-reverse justify-evenly"
+                        >
+                          <template x-for="n in 8" :key="'bottom-'+n">
+                            <span
+                              class="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-amber-100 transition duration-150"
+                              :class="(tick === (14 + n)) ? 'opacity-100 scale-110' : 'opacity-40 scale-90'"
+                            ></span>
+                          </template>
+                        </div>
 
-      <!-- JACKPOT + digits inside pill -->
-      <div class="relative z-10 flex flex-col items-center justify-center gap-2 top-1">
-        <img
-          src="images/JackpotVisual3.png"
-          class="w-[70vw] max-w-[420px] md:max-w-[460px]"
-          alt="Jackpot"
-        />
+                        <!-- JACKPOT + digits inside pill -->
+                        <div
+                          class="relative z-10 flex flex-col items-center justify-center gap-2 top-1"
+                        >
+                          <img
+                            src="images/JackpotVisual3.png"
+                            class="w-[70vw] max-w-[420px] md:max-w-[460px]"
+                            alt="Jackpot"
+                          />
 
-        <div
-          class="flex items-center justify-center gap-1 lg:gap-2 px-6 py-1"
-          :style="{ transform: 'scale(' + digitScale + ')' }"
-        >
-          <template x-for="(ch, idx) in chars()" :key="idx">
-            <div
-              class="flex items-center justify-center rounded-[12px] bg-[#fef3c7] border border-amber-200 shadow-sm -translate-y-[65px] lg:-translate-y-28 "
-              :class="ch === '₱'
+                          <div
+                            class="flex items-center justify-center gap-1 lg:gap-2 px-6 py-1"
+                            :style="{ transform: 'scale(' + digitScale + ')' }"
+                          >
+                            <template x-for="(ch, idx) in chars()" :key="idx">
+                              <div
+                                class="flex items-center justify-center rounded-[12px] bg-[#fef3c7] border border-amber-200 shadow-sm -translate-y-[65px] lg:-translate-y-28"
+                                :class="ch === '₱'
                 ? 'w-11 h-14 sm:h-11 lg:w-14 lg:h-[80px]'
                 : 'h-14 w-10 sm:h-[52px] sm:w-11 lg:h-[80px] lg:w-14'"
-            >
-              <span
-                class="font-black text-yellow-700 tracking-wider"
-                :class="ch === '₱'
+                              >
+                                <span
+                                  class="font-black text-yellow-700 tracking-wider"
+                                  :class="ch === '₱'
                   ? 'text-4xl lg:text-[3.5rem]'
                   : 'text-4xl lg:text-[3.5rem]'"
-                x-text="ch"
-              ></span>
-            </div>
-          </template>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
+                                  x-text="ch"
+                                ></span>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                   <header class="mb-2">
                     <h3
