@@ -1,136 +1,72 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prize Chart</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prize Chart</title>
 
-  <!-- ✅ Tailwind runtime (NOT the CSS file) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: { extend: {} }
-    }
-  </script>
+    <!-- ✅ Tailwind runtime (NOT the CSS file) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: { extend: {} },
+      };
+    </script>
 
-  <!-- ✅ Alpine -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- ✅ Alpine -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
 
-  <style>
-    [x-cloak]{display:none!important;}
-  </style>
-</head>
-<body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-  <section x-data="prizeChart()" class="max-w-screen-xl mx-auto px-4 md:px-6 py-8" x-cloak>
-    <!-- Header -->
-    <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Prize Chart</h2>
-        <p class="text-slate-600 dark:text-slate-300 mt-1">
-          Match the letters in order.
-          <span class="inline-flex items-center gap-1 align-middle">
-            <span class="inline-block w-3 h-3 rounded-full bg-red-500"></span> = color ball
-          </span>
-        </p>
-      </div>
-
-      <!-- Turbo Multiplier -->
-      <div class="flex items-center gap-3">
-        <label for="multi" class="text-sm font-medium">Turbo</label>
-        <select id="multi" x-model.number="multiplier"
-          class="rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2 text-sm">
-          <option value="1">x1 (Off)</option>
-          <option value="2">x2</option>
-          <option value="3">x3</option>
-          <option value="5">x5</option>
-          <option value="10">x10</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- Grid Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-6">
-      <template x-for="t in tiers" :key="t.key">
-        <article
-          class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur p-4 shadow-sm hover:shadow-md transition">
-          <div class="flex items-center justify-between">
-            <h3 class="font-bold" x-text="t.label"></h3>
-            <span class="inline-flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-full"
-              :class="t.fixed ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200' : 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-200'">
-              <template x-if="t.fixed"><span>Jackpot</span></template>
-              <template x-if="!t.fixed"><span x-text="multiplier === 1 ? 'Base' : `Turbo x${multiplier}`"></span></template>
-            </span>
-          </div>
-
-          <!-- Visual match -->
-          <div class="mt-3 flex items-center gap-2">
-            <template x-for="i in t.letters" :key="i">
-              <span class="inline-block w-5 h-5 rounded-full bg-slate-300/70 dark:bg-slate-600" aria-hidden="true"></span>
-            </template>
-            <template x-if="t.color">
-              <span class="inline-block w-5 h-5 rounded-full bg-red-500 ring-2 ring-red-500/50 shadow" aria-hidden="true"></span>
-            </template>
-          </div>
-
-          <!-- Prize -->
-          <p class="mt-4 text-2xl font-extrabold tracking-tight text-emerald-600 dark:text-emerald-400"
-             x-text="formatP(t)"></p>
-
-          <p class="text-xs text-slate-500 dark:text-slate-400 mt-2" x-show="!t.fixed && multiplier>1">
-            Shows multiplied value. Base: <span x-text="peso(t.base)"></span>
-          </p>
-        </article>
-      </template>
-    </div>
-
-    <!-- Compact Table -->
-    <div class="mt-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
-      <table class="min-w-full text-sm">
-        <thead class="bg-slate-50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-200">
-          <tr>
-            <th class="text-left font-semibold px-4 py-2">Match</th>
-            <th class="text-left font-semibold px-4 py-2">Visual</th>
-            <th class="text-right font-semibold px-4 py-2">Prize</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
-          <template x-for="t in tiers" :key="t.key + '-row'">
-            <tr class="bg-white/70 dark:bg-slate-900/70">
-              <td class="px-4 py-3 font-medium" x-text="t.label"></td>
-              <td class="px-4 py-3">
-                <div class="flex items-center gap-1">
-                  <template x-for="i in t.letters" :key="i">
-                    <span class="inline-block w-4 h-4 rounded-full bg-slate-300/70 dark:bg-slate-600" aria-hidden="true"></span>
-                  </template>
-                  <template x-if="t.color">
-                    <span class="inline-block w-4 h-4 rounded-full bg-red-500" aria-hidden="true"></span>
-                  </template>
-                </div>
-              </td>
-              <td class="px-4 py-3 text-right font-bold" x-text="formatP(t)"></td>
-            </tr>
-          </template>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <script>
-    function prizeChart() {
-      return {
-        multiplier: 1,
-        tiers: [
-          { key: 'jackpot', label: 'JACKPOT',           letters: 4, color: true,  base: 1200000, fixed: true  },
-          { key: 'four',    label: '4 LETTERS',         letters: 4, color: false, base: 30000,   fixed: false },
-          { key: '3c',      label: '3 LETTERS + COLOR', letters: 3, color: true,  base: 10000,   fixed: false },
-          { key: '3',       label: '3 LETTERS',         letters: 3, color: false, base: 500,     fixed: false },
-          { key: '2c',      label: '2 LETTERS + COLOR', letters: 2, color: true,  base: 300,     fixed: false },
-        ],
-        peso(n){ return '₱' + Number(n).toLocaleString('en-PH'); },
-        formatP(t){ return t.fixed ? this.peso(t.base) : this.peso(t.base * (this.multiplier || 1)); }
+    <style>
+      [x-cloak] {
+        display: none !important;
       }
-    }
-  </script>
-</body>
+    </style>
+  </head>
+  <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <div class="flex flex-col justify-center items-center gap-2">
+      <h1>Insert Logo here</h1>
+
+      <div class="flex flex-row justify-evenly text-center gap-3">
+        <div class="border border-orange-400 rounded-lg h-12 w-28">
+          <h1>1,000,000</h1>
+        </div>
+        <div class="border border-orange-400 rounded-lg h-12 w-28">
+          <h1>1,000,000</h1>
+        </div>
+        <div class="border border-orange-400 rounded-lg h-12 w-28">
+          <h1>1,000,000</h1>
+        </div>
+      </div>
+      <div class="flex flex-row justify-evenly text-center gap-3">
+        <div class="border border-orange-400 rounded-lg h-12 w-28">
+          <h1>1,000,000</h1>
+        </div>
+        <div class="border border-orange-400 rounded-lg h-12 w-28">
+          <h1>1,000,000</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="border border-orange-400 rounded-lg h-60 my-8 mx-4">
+        <h1 class="text-center items-center text-orange-400"> Lucky Pick Game here</h1>
+    </div>
+
+    <div class="flex flex-row">
+        <div class="border border-orange-400 rounded-lg text-center mx-auto w-40">
+            <h1>Bet:</h1>
+            <h1>2</h1>
+        </div>
+         <div class="border border-orange-400 rounded-lg text-center mx-auto w-40">
+            <h1>Credits:</h1>
+            <h1>200</h1>
+        </div>
+    </div>
+    <div class="border border-orange-400 rounded-lg text-center mx-auto my-2 w-80">
+            <h1>Click Spin to...</h1>
+        </div>
+  </body>
 </html>
